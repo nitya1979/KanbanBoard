@@ -9,6 +9,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dnp.Kanban.Web.Tests", "Dnp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dnp.Kanban.Domain", "Dnp.Kanban.Domain\Dnp.Kanban.Domain.csproj", "{B0DB55CA-5164-4AAA-AC45-06116FF3CB74}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SqlRepository", "SqlRepository", "{66475F9F-46CE-41DB-A1ED-99263B82B698}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dnp.Kanban.SqlRepository", "Dnp.Kanban.SqlRespository\Dnp.Kanban.SqlRepository.csproj", "{30DFEC6E-8489-48F4-A516-3A8AC57E410B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dnp.Kanban.SqlRepository.Tests", "Dnp.Kanban.SqlRepository.Tests\Dnp.Kanban.SqlRepository.Tests.csproj", "{99686533-9D9F-42D5-AACF-47062EECFF39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,8 +33,20 @@ Global
 		{B0DB55CA-5164-4AAA-AC45-06116FF3CB74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0DB55CA-5164-4AAA-AC45-06116FF3CB74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0DB55CA-5164-4AAA-AC45-06116FF3CB74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30DFEC6E-8489-48F4-A516-3A8AC57E410B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30DFEC6E-8489-48F4-A516-3A8AC57E410B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30DFEC6E-8489-48F4-A516-3A8AC57E410B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30DFEC6E-8489-48F4-A516-3A8AC57E410B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99686533-9D9F-42D5-AACF-47062EECFF39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99686533-9D9F-42D5-AACF-47062EECFF39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99686533-9D9F-42D5-AACF-47062EECFF39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99686533-9D9F-42D5-AACF-47062EECFF39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{30DFEC6E-8489-48F4-A516-3A8AC57E410B} = {66475F9F-46CE-41DB-A1ED-99263B82B698}
+		{99686533-9D9F-42D5-AACF-47062EECFF39} = {66475F9F-46CE-41DB-A1ED-99263B82B698}
 	EndGlobalSection
 EndGlobal

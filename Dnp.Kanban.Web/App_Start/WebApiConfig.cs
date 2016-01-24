@@ -5,6 +5,9 @@ using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
+using Microsoft.Practices.Unity;
+using Dnp.Kanban.Domain;
+using Dnp.Kanban.SqlRepository;
 
 namespace Dnp.Kanban.Web
 {
@@ -16,6 +19,10 @@ namespace Dnp.Kanban.Web
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+
+            //var _unityContainer = new UnityContainer();
+            //_unityContainer.RegisterType<IProjectRepository, SqlProjectRepository>()
+            //config.DependencyResolver = new UnityResolover(_unityContainer);
 
             // Web API routes
             config.MapHttpAttributeRoutes();
