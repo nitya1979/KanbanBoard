@@ -319,8 +319,10 @@
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular-route.min.js.map" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
-    <Content Include="Scripts\app\AccountController.js" />
+    <Content Include="Scripts\app\Controller\LoginController.js" />
     <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\Controller\RegistrationController.js" />
+    <Content Include="Scripts\app\Services\AccountService.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />

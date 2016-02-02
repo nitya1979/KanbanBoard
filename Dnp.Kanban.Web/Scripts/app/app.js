@@ -8,9 +8,15 @@
         }).
         when("/Login",{
             templateUrl: "/Template/GetTemplate/_Login",
-            controller: "AccountController"
-        }) 
+            controller: "LoginController"
+        }).
+        when("Register", {
+            templateUrl: "/Template/GetTemplate/_Register",
+            controller: "RegisterController"
+        })
         .otherwise("/");
 
     });
+
+    app.value("access_token", "");
 }());
