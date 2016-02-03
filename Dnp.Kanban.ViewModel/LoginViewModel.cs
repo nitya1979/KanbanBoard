@@ -18,5 +18,6 @@ namespace Dnp.Kanban.ViewModel
         [Display(Name = "Password")]
         public string Password { get; set; }
 
+
     }
 }

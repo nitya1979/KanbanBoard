@@ -27,7 +27,10 @@ namespace Dnp.Kanban.Web
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                       "~/Scripts/angular.js",
                       "~/Scripts/angular-route.js",
-                      "~/Scripts/app/app.js"
+                      "~/Scripts/app/app.js",
+                      "~/Scripts/app/Services/AccountService.js",
+                      "~/Scripts/app/Controller/RegistrationController.js",
+                      "~/Scripts/app/Controller/LoginController.js"
                 ));
         }
     }

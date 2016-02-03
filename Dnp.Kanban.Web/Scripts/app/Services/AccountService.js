@@ -10,19 +10,23 @@
                 password: loginPassword
             };
 
+            alert(JSON.stringify(data));
+
             $http.post("/Token", JSON.stringify( data))
                  .then(function (response) {
+                     alert(JSON.stringify(response.data));
                 return response.data;
             });
         }
 
         var register = function (userName, loginPassword, confirmPassword) {
-
             var data = {
                 Email: userName,
                 Password: loginPassword,
                 ConfirmPassword: confirmPassword
             };
+
+            alert(JSON.stringify(data));
 
             $http.post("/api/Account/Register", JSON.stringify(data))
                  .then(function (response) {
@@ -31,7 +35,8 @@
         }
 
         return {
-            login : login
+            login: login,
+            register : register
         };
     };
 

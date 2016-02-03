@@ -10,9 +10,9 @@
             templateUrl: "/Template/GetTemplate/_Login",
             controller: "LoginController"
         }).
-        when("Register", {
+        when("/Register", {
             templateUrl: "/Template/GetTemplate/_Register",
-            controller: "RegisterController"
+            controller: "registrationController"
         })
         .otherwise("/");
 
