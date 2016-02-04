@@ -1,5 +1,5 @@
 ﻿(function () {
-    var app = angular.module("kanbanBoard", ["ngRoute"]);
+    var app = angular.module("kanbanBoard", ["ngRoute", "LocalStorageModule"]);
 
     app.config(function ($routeProvider) {
         $routeProvider.when("/", {
@@ -18,5 +18,4 @@
 
     });
 
-    app.value("access_token", "");
 }());
