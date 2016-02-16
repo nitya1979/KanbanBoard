@@ -18,7 +18,9 @@ namespace Dnp.Kanban.Web
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/respond.js",
+                       "~/Scripts/moment.min.js",
+                      "~/Scripts/bootstrap-datetimepicker.min.js"));    
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
@@ -30,8 +32,13 @@ namespace Dnp.Kanban.Web
                       "~/Scripts/angular-local-storage.js",
                       "~/Scripts/app/app.js",
                       "~/Scripts/app/Services/AccountService.js",
+                      "~/Scripts/app/Services/sharedService.js",
+                      "~/Scripts/app/Controller/menuController.js",
                       "~/Scripts/app/Controller/RegistrationController.js",
-                      "~/Scripts/app/Controller/LoginController.js"
+                      "~/Scripts/app/Controller/LoginController.js",
+                      "~/Scripts/app/Controller/LogoutController.js",
+                      "~/Scripts/app/Controller/projectController.js"
+
                 ));
         }
     }

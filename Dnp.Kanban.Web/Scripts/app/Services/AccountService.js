@@ -1,38 +1,26 @@
 ﻿(function () {
 
-    var accountManager = function ($http) {
+    var accountManager = function ($http, localStorageService) {
+        var authStatus = {
+            isAuth: false,
+            authMessage : 'Not Authenticated'
+        };
 
         var login = function (userName, loginPassword) {
 
-//            var data = "grant_type=password&username=" + userName + "&password=" + loginPassword;
+            var data = "grant_type=password&username=" + userName + "&password=" + loginPassword;
 
-            var data = {
-                grant_type: "password",
-                username: userName,
-                password: loginPassword
-            };
-
-            alert("account Manager : " + data);
-
-            //$http.post("/Token", data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }).success(function (response) {
-
-                //localStorageService.set('authorizationData', { token: response.access_token, userName: loginData.userName });
-
-                //_authentication.isAuth = true;
-                //_authentication.userName = loginData.userName;
-            //    return response;
-
-            //}).error(function (err, status) {
-            //    alert(JSON.stringify( err));
-            //});
-
-            $http.post("/Token", data)
+          return $http.post("/Token", data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                  .then(function (response) {
-                     alert(JSON.stringify( response.data));
                      return response.data;
                  });
 
+
         };
+
+        var logout = function () {
+            localStorageService.clearAll();
+        }
 
         var register = function (userName, loginPassword, confirmPassword) {
             var data = {
@@ -40,8 +28,6 @@
                 Password: loginPassword,
                 ConfirmPassword: confirmPassword
             };
-
-            alert(JSON.stringify(data));
 
             $http.post("/api/Account/Register", JSON.stringify(data))
                  .then(function (response) {
@@ -51,6 +37,7 @@
 
         return {
             login: login,
+            logout: logout,
             register : register
         };
     };
