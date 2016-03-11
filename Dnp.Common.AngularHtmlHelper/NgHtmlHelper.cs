@@ -31,9 +31,9 @@ namespace Dnp.Common.AngularHtmlHelper
             if (namedArg != null)
                 errorMsg = namedArg.TypedValue.Value.ToString();
             else
-                errorMsg = "Please enter " + member.Name;
+                errorMsg = "Please enter " + member.Name.ToLower();
 
-            return GetSpan(errorMsg, member.Name, "required");
+            return GetSpan(errorMsg, member.Name.ToLower(), "required");
         }
     }
 }

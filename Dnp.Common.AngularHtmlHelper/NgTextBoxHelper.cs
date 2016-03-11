@@ -24,13 +24,13 @@ namespace Dnp.Common.AngularHtmlHelper
                 {
                     string inputType = HelperConstants.DataTypeMapping[(DataType)cs.ConstructorArguments[0].Value];
                     tagBuilder.MergeAttribute("type", inputType);
-                    tagBuilder.MergeAttribute("name", member.Name);
+                    tagBuilder.MergeAttribute("name", member.Name.ToLower());
 
                     CustomAttributeNamedArgument nameArg = cs.NamedArguments.Where(m => m.MemberName == "ErrorMessage").First();
 
                     if (nameArg != null)
                     {
-                        validationSpans.Add(NgHtmlHelper.GetSpan(nameArg.TypedValue.Value.ToString(), member.Name, inputType));
+                        validationSpans.Add(NgHtmlHelper.GetSpan(nameArg.TypedValue.Value.ToString(), member.Name.ToLower(), inputType));
                     }
                 }
                 else if (cs.AttributeType == typeof(RequiredAttribute))
@@ -50,11 +50,11 @@ namespace Dnp.Common.AngularHtmlHelper
             if (member.CustomAttributes.Where(attr => attr.AttributeType == typeof(DataTypeAttribute)).Count() == 0)
             {
                 tagBuilder.MergeAttribute("type", "text");
-                tagBuilder.MergeAttribute("name", member.Name);
+                tagBuilder.MergeAttribute("name", member.Name.ToLower());
             }
 
             tagBuilder.AddCssClass(cssClass);
-            tagBuilder.MergeAttribute("ng-model", member.Name);
+            tagBuilder.MergeAttribute("ng-model", member.ReflectedType.Name.ToCamelCase() +"."+ member.Name.ToCamelCase());
 
             string finalHtml = tagBuilder.ToString(TagRenderMode.SelfClosing);
 

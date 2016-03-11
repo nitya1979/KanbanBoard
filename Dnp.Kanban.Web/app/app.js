@@ -1,10 +1,10 @@
 ﻿(function () {
-    var app = angular.module("kanbanBoard", ["ngRoute", "LocalStorageModule"]);
+    var app = angular.module("kanbanBoard", ["ngRoute", "LocalStorageModule", "ngCookies", "ui.bootstrap"]);
 
     app.config(function ($routeProvider) {
         $routeProvider.when("/Dashboard", {
             templateUrl: "/Template/GetAuthTemplate/_dashboard",
-            controller: "DashboardController"
+            controller: "dashboardController"
         }).
         when("/Login",{
             templateUrl: "/Template/GetTemplate/_Login",

@@ -1,19 +1,21 @@
 ﻿(function () {
     var app = angular.module("kanbanBoard");
 
-    var LoginController = function ($scope, $location, accountManager, localStorageService, sharedService) {
+    var LoginController = function ($scope, $location, accountManager, sharedService) {
         
         var loginData = {
             userName: "",
-            loginPassword: ""
+            loginPassword: "",
+            rememberMe: false
         };
 
         $scope.isAuth = true;
         $scope.loginData = loginData;
         var onLoginComplete = function (data) {
             $scope.isAuth = true;
-            localStorageService.set('authorizationData', { token: data.access_token, userName: $scope.loginData.userName });
+
             sharedService.prepForBroadcast(true);
+
             $location.url("/Dashboard");
         };
         
@@ -25,7 +27,7 @@
 
         $scope.login = function () {
 
-            accountManager.login($scope.loginData.userName, $scope.loginData.loginPassword)
+            accountManager.login($scope.loginData.userName, $scope.loginData.loginPassword, $scope.loginData.rememberMe)
                           .then(onLoginComplete, onError);
         }
         

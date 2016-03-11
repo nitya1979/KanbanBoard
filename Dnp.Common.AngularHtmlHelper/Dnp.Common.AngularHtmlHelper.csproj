@@ -71,11 +71,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HelperConstants.cs" />
+    <Compile Include="NgDateBoxHelper.cs" />
     <Compile Include="NgFormHelper.cs" />
     <Compile Include="NgHtmlHelper.cs" />
     <Compile Include="NgTextAreaHelper.cs" />
     <Compile Include="NgTextBoxHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StringExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

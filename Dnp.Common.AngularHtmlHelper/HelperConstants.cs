@@ -17,8 +17,8 @@ namespace Dnp.Common.AngularHtmlHelper
             DataTypeMapping.Add(DataType.Password, "password");
             DataTypeMapping.Add(DataType.Text, "text");
             DataTypeMapping.Add(DataType.MultilineText, "textarea");
-            DataTypeMapping.Add(DataType.Date, "date");
-            DataTypeMapping.Add(DataType.DateTime, "datetime");
+            DataTypeMapping.Add(DataType.Date, "text");
+            DataTypeMapping.Add(DataType.DateTime, "text");
         }
     }
 }

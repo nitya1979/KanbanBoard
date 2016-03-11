@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace Dnp.Common.AngularHtmlHelper
@@ -18,6 +15,8 @@ namespace Dnp.Common.AngularHtmlHelper
             MemberInfo member = ((MemberExpression)expression.Body).Member;
 
             var tagBuilder = new TagBuilder("textarea");
+
+            tagBuilder.MergeAttribute("name", member.Name.ToLower());
 
             tagBuilder.AddCssClass(cssClass);
 
@@ -37,7 +36,7 @@ namespace Dnp.Common.AngularHtmlHelper
                 }
             }
 
-            tagBuilder.MergeAttribute("ng-model", member.Name);
+            tagBuilder.MergeAttribute("ng-model", member.ReflectedType.Name.ToCamelCase() + "." + member.Name.ToCamelCase());
 
             string finalHtml = tagBuilder.ToString(TagRenderMode.Normal);
 

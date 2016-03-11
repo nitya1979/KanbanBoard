@@ -1,12 +1,13 @@
 ﻿(function () {
     var app = angular.module("kanbanBoard");
 
-    var menuController = function ($scope, $location, sharedService, accountManager) {
+    var menuController = function ($scope, $location, accountManager, projectService) {
 
-        $scope.isAuth = false;
-
+        $scope.isAuth = accountManager.isAuthorized();
+        $scope.projectList = projectService.getProjects();
+        $scope.selectedProject = $scope.projectList[0];
         $scope.$on("handleBroadCast", function () {
-            $scope.isAuth = sharedService.isAuth;
+            $scope.isAuth = accountManager.isAuthorized();
         });
 
         $scope.doLogin = function () {
