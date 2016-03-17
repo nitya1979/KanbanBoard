@@ -12,6 +12,7 @@ namespace Dnp.Kanban.SqlRepository
     public class DbProject
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         [Required]
@@ -26,10 +27,9 @@ namespace Dnp.Kanban.SqlRepository
         public DateTime StartDate { get; set; }
 
         [Required]
-        public DateTime EstimatedDate { get; set; }
-
-        [Required]
         public DateTime EndDate { get; set; }
+
+        public virtual ICollection<DbProjectStage> Stages { get; set; }
 
     }
 }

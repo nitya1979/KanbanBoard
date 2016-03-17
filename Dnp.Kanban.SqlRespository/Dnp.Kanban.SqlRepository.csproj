@@ -61,6 +61,14 @@
     <Compile Include="Migrations\201601240646157_InitialSetup.Designer.cs">
       <DependentUpon>201601240646157_InitialSetup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603132232482_Remove_Est_date.cs" />
+    <Compile Include="Migrations\201603132232482_Remove_Est_date.Designer.cs">
+      <DependentUpon>201603132232482_Remove_Est_date.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603170149132_Stage_Relation.cs" />
+    <Compile Include="Migrations\201603170149132_Stage_Relation.Designer.cs">
+      <DependentUpon>201603170149132_Stage_Relation.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SqlProjectRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,6 +86,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201601240646157_InitialSetup.resx">
       <DependentUpon>201601240646157_InitialSetup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603132232482_Remove_Est_date.resx">
+      <DependentUpon>201603132232482_Remove_Est_date.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603170149132_Stage_Relation.resx">
+      <DependentUpon>201603170149132_Stage_Relation.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

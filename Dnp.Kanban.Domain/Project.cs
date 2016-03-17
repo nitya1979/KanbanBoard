@@ -1,9 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dnp.Kanban.Domain
 {
@@ -22,11 +18,8 @@ namespace Dnp.Kanban.Domain
         [Required(ErrorMessage ="Please enter start date.")]
         public DateTime StartDate { get; set; }
 
-        [DataType(DataType.Date, ErrorMessage ="Invalid projected end date.")]
-        [Required(ErrorMessage = "Please enter projected end date.")]
-        public DateTime EstimatedDate { get; set; }
-
         [DataType(DataType.Date, ErrorMessage ="Invalid end date.")]
+        [Required(ErrorMessage = "Please enter end date.")]
         public DateTime EndDate { get; set; }
 
     }

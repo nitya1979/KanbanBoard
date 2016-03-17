@@ -12,6 +12,7 @@ namespace Dnp.Kanban.SqlRepository
     public class DbProjectStage
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { get; set; }
 
         public int ProjectID { get; set; }

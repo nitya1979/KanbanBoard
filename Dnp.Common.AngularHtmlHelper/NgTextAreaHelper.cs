@@ -36,7 +36,7 @@ namespace Dnp.Common.AngularHtmlHelper
                 }
             }
 
-            tagBuilder.MergeAttribute("ng-model", member.ReflectedType.Name.ToCamelCase() + "." + member.Name.ToCamelCase());
+            tagBuilder.MergeAttribute("ng-model", member.ReflectedType.Name.ToCamelCase() + "." + member.Name);
 
             string finalHtml = tagBuilder.ToString(TagRenderMode.Normal);
 

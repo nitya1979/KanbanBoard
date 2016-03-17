@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Dnp.Kanban.Domain
 {
-    public interface IProjectRepository
+    public class Result
     {
-        List<Project> GetProjectList();
+        public bool Success { get; set; }
 
-        Project GetProject(int id);
+        public string ErrorMessage { get; set; }
 
-        Task<int> SaveProject(Project project);
     }
 }

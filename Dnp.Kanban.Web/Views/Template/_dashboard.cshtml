@@ -5,12 +5,12 @@
 </div>
 <div class="row">
     <div class="col-md-3" ng-repeat="proj in projects">
-        <div class="panel panel-default">
+        <div class="panel">
             <div class="panel-heading">
-                <p class="panel-title">{{proj.name}}</p>
+                <p class="panel-title"><a href="#/Project/{{proj.ID}}">{{proj.Name}}</a></p>
             </div>
             <div class="panel-body">
-                
+                Start Date : {{proj.StartDate}}
             </div>
         </div>
     </div> 

@@ -4,8 +4,13 @@
     var menuController = function ($scope, $location, accountManager, projectService) {
 
         $scope.isAuth = accountManager.isAuthorized();
-        $scope.projectList = projectService.getProjects();
-        $scope.selectedProject = $scope.projectList[0];
+
+        projectService.getProjects().then(function (data) {
+            $scope.projectList = data;
+            $scope.selectedProject = $scope.projectList[0];
+        }, function (result) { alert(JSON.stringify(result)); });
+        
+        
         $scope.$on("handleBroadCast", function () {
             $scope.isAuth = accountManager.isAuthorized();
         });

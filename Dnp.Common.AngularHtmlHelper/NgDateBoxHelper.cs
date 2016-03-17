@@ -33,7 +33,7 @@ namespace Dnp.Common.AngularHtmlHelper
 
                     if (nameArg != null)
                     {
-                        validationSpans.Add(NgHtmlHelper.GetSpan(nameArg.TypedValue.Value.ToString(), member.Name.ToLower().ToLower(), inputType));
+                        validationSpans.Add(NgHtmlHelper.GetSpan(nameArg.TypedValue.Value.ToString(), member.Name.ToLower(), "date"));
                     }
                 }
                 else if (cs.AttributeType == typeof(RequiredAttribute))
@@ -50,9 +50,9 @@ namespace Dnp.Common.AngularHtmlHelper
                 tagBuilder.MergeAttribute("type", "text");
                 tagBuilder.MergeAttribute("name", member.Name.ToLower());
             }
-
+            tagBuilder.MergeAttribute("readonly", "readonly");
             tagBuilder.AddCssClass(cssClass);
-            tagBuilder.MergeAttribute("ng-model", member.ReflectedType.Name.ToCamelCase() + "." + member.Name.ToCamelCase());
+            tagBuilder.MergeAttribute("ng-model", member.ReflectedType.Name.ToCamelCase() + "." + member.Name);
 
             if (string.IsNullOrEmpty(format)) format = "MM/dd/yyyy";
             tagBuilder.MergeAttribute("uib-datepicker-popup", format);

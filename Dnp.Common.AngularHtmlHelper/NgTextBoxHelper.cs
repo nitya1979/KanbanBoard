@@ -54,7 +54,7 @@ namespace Dnp.Common.AngularHtmlHelper
             }
 
             tagBuilder.AddCssClass(cssClass);
-            tagBuilder.MergeAttribute("ng-model", member.ReflectedType.Name.ToCamelCase() +"."+ member.Name.ToCamelCase());
+            tagBuilder.MergeAttribute("ng-model", member.ReflectedType.Name.ToCamelCase() +"."+ member.Name);
 
             string finalHtml = tagBuilder.ToString(TagRenderMode.SelfClosing);
 

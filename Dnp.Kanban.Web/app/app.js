@@ -21,7 +21,11 @@
         when("/Project", {
             templateUrl: "/Template/GetAuthTemplate/_projectDetail",
             controller: "projectController"
-        })    
+        }).
+        when("/Project/:ID", {
+            templateUrl: "/Template/GetAuthTemplate/_projectDetail",
+            controller: "projectController"
+        })
         .otherwise("/Dashboard");
 
     });

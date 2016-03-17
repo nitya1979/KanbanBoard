@@ -1,8 +1,8 @@
 ﻿    function Project() {
-        this.id = 0;
-        this.name = "New Project";
-        this.description = "";
-        this.startDate = new Date();
-        this.endDate = new Date();
+        this.ID = 0;
+        this.Name = "New Project";
+        this.Description = "";
+        this.StartDate = new Date();
+        this.EndDate = new Date();
     }
 

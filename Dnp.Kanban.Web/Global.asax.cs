@@ -19,7 +19,7 @@ namespace Dnp.Kanban.Web
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            //BootStrapper.Initialize();
+            SqlRepository.MapperSetup.InitializeMapper();
         }
     }
 }

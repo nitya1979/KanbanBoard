@@ -8,6 +8,9 @@ using Newtonsoft.Json.Serialization;
 using Microsoft.Practices.Unity;
 using Dnp.Kanban.Domain;
 using Dnp.Kanban.SqlRepository;
+using System.Web.Mvc;
+using System.Web.Http.Controllers;
+using Dnp.Kanban.Web.Controllers;
 
 namespace Dnp.Kanban.Web
 {
@@ -20,9 +23,11 @@ namespace Dnp.Kanban.Web
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
-            //var _unityContainer = new UnityContainer();
-            //_unityContainer.RegisterType<IProjectRepository, SqlProjectRepository>()
-            //config.DependencyResolver = new UnityResolover(_unityContainer);
+            var _unityContainer = new UnityContainer();
+            _unityContainer.RegisterType<IProjectRepository, SqlProjectRepository>( new InjectionConstructor( "DefaultConnection"));
+            _unityContainer.RegisterType<IHttpController, ProjectController>();
+
+            config.DependencyResolver = new UnityResolover(_unityContainer);
 
             // Web API routes
             config.MapHttpAttributeRoutes();

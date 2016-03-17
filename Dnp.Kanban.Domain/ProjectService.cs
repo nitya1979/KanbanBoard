@@ -17,5 +17,29 @@ namespace Dnp.Kanban.Domain
 
             this._projectRepo = projectReop;
         }
+
+        public Task<IEnumerable<Project>> GetAllProjects()
+        {
+            return Task.Factory.StartNew<IEnumerable<Project>>(() => { return _projectRepo.GetProjectList(); }) ;
+        }
+
+        public Task<Project> GetProject(int id)
+        {
+            return Task.Factory.StartNew<Project>(() => { return _projectRepo.GetProject(id); });
+        }
+
+        public async Task<Result> SaveProjectAsync(Project project)
+        {
+           return await Task.Factory.StartNew<Result>(() =>
+            {
+                int i = _projectRepo.SaveProject(project).Result;
+
+                if (i > 0)
+                    return new Result { Success = true };
+                else
+                    return new Result { Success = false, ErrorMessage = "Failed to Save Data" };
+            });
+            
+        }
     }
 }
