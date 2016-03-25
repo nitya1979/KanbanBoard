@@ -41,5 +41,13 @@ namespace Dnp.Kanban.Domain
             });
             
         }
+
+        public async Task<IEnumerable<ProjectStage>> GetProjectStages(int projectId)
+        {
+            return await Task.Factory.StartNew<IEnumerable<ProjectStage>>(() =>
+            {
+                return _projectRepo.GetProjectStages(projectId);
+            });
+        }
     }
 }

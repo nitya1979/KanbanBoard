@@ -8,6 +8,7 @@
         };
 
         var onError = function (result) {
+            alert(result.data.Message);
         };
 
         projectService.getProjects().then(onSuccess, onError);

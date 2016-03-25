@@ -26,7 +26,8 @@ namespace Dnp.Kanban.SqlRepository
         public Project GetProject(int id)
         {
             var project = _kanbanContext.DbProjects.Find(id);
-            return Mapper.Map<Project>(project);
+            Project p = Mapper.Map<Project>(project);
+            return p;
         }
 
         public List<Project> GetProjectList()
@@ -41,6 +42,20 @@ namespace Dnp.Kanban.SqlRepository
             }
 
             return projectList;
+        }
+
+        public List<ProjectStage> GetProjectStages(int projectId)
+        {
+            var dbProjectStages = _kanbanContext.DbProjectStage.Where(s => s.ProjectID == projectId).ToList();
+
+            List<ProjectStage> stage = new List<ProjectStage>();
+
+            foreach (var item in dbProjectStages)
+            {
+                stage.Add(Mapper.Map<ProjectStage>(item));
+            }
+
+            return stage;
         }
 
         public async Task<int> SaveProject(Project project)

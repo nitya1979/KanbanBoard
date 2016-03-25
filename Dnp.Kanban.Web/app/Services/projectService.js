@@ -27,10 +27,18 @@
 
         };
 
+        var getStages = function (projectId) {
+
+            return $http.post("/api/Project/Stages/" + projectId).then(function (response) {
+                return response.data;
+            });
+        };
+
         return {
             getProjects: getProjects,
             getProject: getProject,
-            saveProject : saveProject
+            saveProject: saveProject,
+            getStages : getStages
         };
     };
 

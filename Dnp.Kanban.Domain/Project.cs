@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace Dnp.Kanban.Domain
@@ -22,5 +23,6 @@ namespace Dnp.Kanban.Domain
         [Required(ErrorMessage = "Please enter end date.")]
         public DateTime EndDate { get; set; }
 
+        public List<ProjectStage> ProjectStages = new List<ProjectStage>();
     }
 }

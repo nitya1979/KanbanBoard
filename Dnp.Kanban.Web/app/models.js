@@ -6,3 +6,9 @@
         this.EndDate = new Date();
     }
 
+    function ProjectStage() {
+        this.ID = 0;
+        this.ProjectID = 0;
+        this.StageName = "";
+        this.className = "";
+    }

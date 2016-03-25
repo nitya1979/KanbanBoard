@@ -10,6 +10,8 @@ namespace Dnp.Kanban.Domain
     {
         List<Project> GetProjectList();
 
+        List<ProjectStage> GetProjectStages(int projectId);
+
         Project GetProject(int id);
 
         Task<int> SaveProject(Project project);

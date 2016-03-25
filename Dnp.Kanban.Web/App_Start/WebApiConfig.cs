@@ -11,6 +11,7 @@ using Dnp.Kanban.SqlRepository;
 using System.Web.Mvc;
 using System.Web.Http.Controllers;
 using Dnp.Kanban.Web.Controllers;
+using Dnp.Kanban.Web.Filters;
 
 namespace Dnp.Kanban.Web
 {
@@ -22,6 +23,7 @@ namespace Dnp.Kanban.Web
             // Configure Web API to use only bearer token authentication.
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
+            config.Filters.Add(new DnpHandleErrorAttribute());
 
             var _unityContainer = new UnityContainer();
             _unityContainer.RegisterType<IProjectRepository, SqlProjectRepository>( new InjectionConstructor( "DefaultConnection"));
