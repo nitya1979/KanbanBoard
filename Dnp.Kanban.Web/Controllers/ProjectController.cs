@@ -13,6 +13,7 @@ using System.Web.Http.Results;
 namespace Dnp.Kanban.Web.Controllers
 {
     [Authorize]
+    [RoutePrefix("api/Project")]
     public class ProjectController : DnpApiController
     {
         ProjectService _projectService;
@@ -77,6 +78,7 @@ namespace Dnp.Kanban.Web.Controllers
         {
         }
 
+        [Route("Stages")]
         public async Task<IHttpActionResult> Stages( int projectId)
         {
             if (projectId == 0)

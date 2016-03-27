@@ -25,8 +25,12 @@
         when("/Project/:ID", {
             templateUrl: "/Template/GetAuthTemplate/_projectDetail",
             controller: "projectController"
-        })
-        .otherwise("/Dashboard");
+        }).
+        when("/Board/:projectId",{
+            templateUrl: "Template/GetAuthTemplate/_Board",
+            controller: "boardController"
+        }).
+        otherwise("/Dashboard");
 
     });
 
