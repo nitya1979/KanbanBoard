@@ -9,6 +9,7 @@
 
         if ($routeParams.ID > 0) {
             projectService.getProject($routeParams.ID).then(function (data) {
+                alert(JSON.stringify(data));
                 $scope.project = data;
                 $scope.project.StartDate = new Date(data.StartDate);
                 $scope.project.EndDate = new Date(data.EndDate);

@@ -13,7 +13,7 @@ using System.Web.Http.Results;
 namespace Dnp.Kanban.Web.Controllers
 {
     [Authorize]
-    public class ProjectController : ApiController
+    public class ProjectController : DnpApiController
     {
         ProjectService _projectService;
 
@@ -25,36 +25,46 @@ namespace Dnp.Kanban.Web.Controllers
             this._projectService = projectService;
         }
         // GET: api/Project
-        public async Task< JsonResult< IEnumerable<Project>>> Get()
+        public async Task< IHttpActionResult> Get()
         {
 
-            ModelState.AddModelError("project id", "Not valid Id");
+            //JsonSerializerSettings settings = new JsonSerializerSettings { DateFormatString = "MM/dd/yyyy" };
 
-            //if (ModelState.IsValid)
-            //{
-                JsonSerializerSettings settings = new JsonSerializerSettings { DateFormatString = "MM/dd/yyyy" };
+            var projectList = await _projectService.GetAllProjects();
 
-                return Json<IEnumerable<Project>>(await _projectService.GetAllProjects(), settings);
-            //}
-            //else
-            //{
-            //    throw new InvalidModelStateResult
-            //}
+            return DnpOk(projectList);
+
+            //return Json<IEnumerable<Project>>(await _projectService.GetAllProjects(), settings);
+
         }
 
         // GET: api/Project/5
-        public async Task<JsonResult<Project>> Get(int id)
+        public async Task<IHttpActionResult> Get(int id)
         {
+            if (id == 0)
+                return NotFound();
 
-            JsonSerializerSettings settings = new JsonSerializerSettings { DateFormatString = "MM/dd/yyyy" };
+            var project = await _projectService.GetProject(id);
 
-            return Json(await _projectService.GetProject(id), settings);
+            if (project == null)
+                return NotFound();
+
+            return DnpOk(project);
         }
 
         // POST: api/Project
-        public async Task<JsonResult<Result>> Post([FromBody]Project project)
+        public async Task<IHttpActionResult> Post([FromBody]Project project)
         {
-            return Json<Result>(await _projectService.SaveProjectAsync(project));
+            if (ModelState.IsValid)
+            {
+                int i = await _projectService.SaveProjectAsync(project);
+                
+                return Ok();
+            }
+            else
+            {
+                return BadRequest(ModelState);
+            }
         }
 
         // PUT: api/Project/5
@@ -67,12 +77,17 @@ namespace Dnp.Kanban.Web.Controllers
         {
         }
 
-        public async Task<JsonResult< IEnumerable<ProjectStage>>> Stages( int projectId)
+        public async Task<IHttpActionResult> Stages( int projectId)
         {
             if (projectId == 0)
-                throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Project Id cannot be null or 0."));
+                return BadRequest("Product id not specified.");
 
-            return Json<IEnumerable<ProjectStage>>(await _projectService.GetProjectStages(projectId));
+            var projectStageList = await _projectService.GetProjectStages(projectId);
+
+            if (projectStageList.Count() == 0)
+                return BadRequest("Product doesn't exist.");
+
+            return DnpOk(projectStageList);
         }
     }
 }

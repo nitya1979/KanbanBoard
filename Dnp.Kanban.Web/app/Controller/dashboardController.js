@@ -4,6 +4,7 @@
     var dashboardController = function ($scope, projectService) {
 
         var onSuccess = function (data) {
+        alert(JSON.stringify(data));
             $scope.projects = data;
         };
 

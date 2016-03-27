@@ -28,16 +28,12 @@ namespace Dnp.Kanban.Domain
             return Task.Factory.StartNew<Project>(() => { return _projectRepo.GetProject(id); });
         }
 
-        public async Task<Result> SaveProjectAsync(Project project)
+        public async Task<int> SaveProjectAsync(Project project)
         {
-           return await Task.Factory.StartNew<Result>(() =>
+           return await Task.Factory.StartNew<int>(() =>
             {
-                int i = _projectRepo.SaveProject(project).Result;
+                return _projectRepo.SaveProject(project).Result;
 
-                if (i > 0)
-                    return new Result { Success = true };
-                else
-                    return new Result { Success = false, ErrorMessage = "Failed to Save Data" };
             });
             
         }
