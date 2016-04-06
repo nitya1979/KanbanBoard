@@ -11,4 +11,5 @@
         this.ProjectID = 0;
         this.StageName = "";
         this.className = "";
+        this.height = "";
     }

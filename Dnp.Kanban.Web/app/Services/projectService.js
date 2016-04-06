@@ -29,7 +29,7 @@
 
         var getStages = function (projectId) {
 
-            return $http.post("/api/Project/Stages/" + projectId).then(function (response) {
+            return $http.get("/api/Project/Stages/" + projectId).then(function (response) {
                 return response.data;
             });
         };

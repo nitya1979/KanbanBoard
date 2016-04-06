@@ -10,6 +10,14 @@
             $scope.selectedProject = $scope.projectList[0];
         }, function (result) { alert(JSON.stringify(result)); });
         
+        $scope.setSelectedProject = function (projectId) {
+            for (var i = 0; i < $scope.projectList.length; i++) {
+                if( $scope.projectList[i].ID == projectId){
+                    $scope.selectedProject = $scope.projectList[i];
+                    break;
+                }
+            }
+        };
         
         $scope.$on("handleBroadCast", function () {
             $scope.isAuth = accountManager.isAuthorized();

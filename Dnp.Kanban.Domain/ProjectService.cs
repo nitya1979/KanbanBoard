@@ -15,6 +15,7 @@ namespace Dnp.Kanban.Domain
             if (projectReop == null)
                 throw new ArgumentNullException("Project respository cannot be null");
 
+
             this._projectRepo = projectReop;
         }
 

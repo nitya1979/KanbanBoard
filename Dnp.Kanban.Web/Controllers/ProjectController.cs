@@ -78,7 +78,8 @@ namespace Dnp.Kanban.Web.Controllers
         {
         }
 
-        [Route("Stages")]
+        [HttpGet]
+        [Route("Stages/{projectId:int}")]
         public async Task<IHttpActionResult> Stages( int projectId)
         {
             if (projectId == 0)

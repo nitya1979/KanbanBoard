@@ -1,13 +1,59 @@
 ﻿@model List<Dnp.Kanban.Domain.ProjectStage>
-<div class="row" ng-repeat="stage in stages" >
-    <div class="{{stage.className}}">
-        <div class="panel panel-default" style="height:100%">
-            <div class="panel-heading">
-                <p class="panel-title">stage.StageName</p>
+<div class="row">
+        <div class="col-md-12">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <form class="navbar-form navbar-right" role="search">
+
+                        <button type="button" class="btn btn-link">
+                            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> New Stage
+                        </button>
+                        <button type="button" class="btn btn-link" ng-click="showDialog()">
+                            <span class="glyphicon glyphicon-tasks" aria-hidden="true" data-toggle="modal" data-target=".bs-example-modal-sm"></span> New Task
+                        </button>
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-responsive table-bordered" style="background-color:white; height:100%">
+            <tr>
+                <td ng-repeat="stage in stages" ng-cl>
+                    <span>{{stage.StageName}}</span>
+                    <button class="btn btn-xs btn-primary glyphicon glyphicon-plus pull-right" />
+                </td>
+            </tr>
+            <tr>
+                <td ng-repeat="stage in stages">
+
+                    <div class="panel panel-primary col-md-3">
+                        <div class="panel-body">
+                            test
+                        </div>
+                    </div>
+
+                </td>
+                
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
             </div>
-            <div class="panel-body">
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
             </div>
         </div>
     </div>
-    
 </div>

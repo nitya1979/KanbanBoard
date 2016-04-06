@@ -15,9 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dnp.Kanban.SqlRepository", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dnp.Kanban.SqlRepository.Tests", "Dnp.Kanban.SqlRepository.Tests\Dnp.Kanban.SqlRepository.Tests.csproj", "{99686533-9D9F-42D5-AACF-47062EECFF39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dnp.Kanban.ViewModel", "Dnp.Kanban.ViewModel\Dnp.Kanban.ViewModel.csproj", "{F1F4D0D5-39BC-4E6E-B8FD-33862BD15506}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dnp.Common.AngularHtmlHelper", "Dnp.Common.AngularHtmlHelper\Dnp.Common.AngularHtmlHelper.csproj", "{3009A497-C43D-4D8C-9B23-8CE5A5BCCC88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dnp.Kanban.ViewModel", "Dnp.Kanban.ViewModel\Dnp.Kanban.ViewModel.csproj", "{15C4C339-AC25-4724-9FF8-609205BDDAF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,14 +45,14 @@ Global
 		{99686533-9D9F-42D5-AACF-47062EECFF39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{99686533-9D9F-42D5-AACF-47062EECFF39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{99686533-9D9F-42D5-AACF-47062EECFF39}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F1F4D0D5-39BC-4E6E-B8FD-33862BD15506}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F1F4D0D5-39BC-4E6E-B8FD-33862BD15506}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F1F4D0D5-39BC-4E6E-B8FD-33862BD15506}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F1F4D0D5-39BC-4E6E-B8FD-33862BD15506}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3009A497-C43D-4D8C-9B23-8CE5A5BCCC88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3009A497-C43D-4D8C-9B23-8CE5A5BCCC88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3009A497-C43D-4D8C-9B23-8CE5A5BCCC88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3009A497-C43D-4D8C-9B23-8CE5A5BCCC88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15C4C339-AC25-4724-9FF8-609205BDDAF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15C4C339-AC25-4724-9FF8-609205BDDAF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15C4C339-AC25-4724-9FF8-609205BDDAF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15C4C339-AC25-4724-9FF8-609205BDDAF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
