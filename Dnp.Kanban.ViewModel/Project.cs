@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dnp.Kanban.ViewModel
 {
-    public class Class1
+    public class Project
     {
     }
 }
