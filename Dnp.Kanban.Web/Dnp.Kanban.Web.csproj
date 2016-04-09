@@ -50,6 +50,10 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
@@ -222,6 +226,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\IdentityConfig.cs" />
@@ -479,6 +484,10 @@
     <ProjectReference Include="..\Dnp.Kanban.SqlRespository\Dnp.Kanban.SqlRepository.csproj">
       <Project>{30dfec6e-8489-48f4-a516-3a8ac57e410b}</Project>
       <Name>Dnp.Kanban.SqlRepository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Dnp.Kanban.ViewModel\Dnp.Kanban.ViewModel.csproj">
+      <Project>{9aef652e-7452-408e-a914-afbc4e86974a}</Project>
+      <Name>Dnp.Kanban.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
