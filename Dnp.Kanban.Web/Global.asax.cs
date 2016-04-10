@@ -20,6 +20,7 @@ namespace Dnp.Kanban.Web
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             SqlRepository.MapperSetup.InitializeMapper();
+            AutoMapperConfig.Setup();
         }
     }
 }

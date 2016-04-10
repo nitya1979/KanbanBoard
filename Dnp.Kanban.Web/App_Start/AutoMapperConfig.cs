@@ -12,9 +12,12 @@ namespace Dnp.Kanban.Web
     {
         public static void Setup()
         {
-            Mapper.CreateMap<ProjectViewModel, Project>();
-            Mapper.CreateMap<Project, ProjectViewModel>();
-
+            Mapper.Initialize(conf => {
+                conf.CreateMap<ProjectViewModel, Project>();
+                conf.CreateMap<ProjectStageViewModel, ProjectStage>();
+                conf.CreateMap<Project, ProjectViewModel>();
+                conf.CreateMap<ProjectStageViewModel, ProjectStage>();
+            });
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using Dnp.Kanban.Domain;
+﻿using AutoMapper;
+using Dnp.Kanban.Domain;
+using Dnp.Kanban.ViewModel;
 using Dnp.Kanban.Web.Filters;
 using Newtonsoft.Json;
 using System;
@@ -29,13 +31,9 @@ namespace Dnp.Kanban.Web.Controllers
         public async Task< IHttpActionResult> Get()
         {
 
-            //JsonSerializerSettings settings = new JsonSerializerSettings { DateFormatString = "MM/dd/yyyy" };
-
             var projectList = await _projectService.GetAllProjects();
-
+            
             return DnpOk(projectList);
-
-            //return Json<IEnumerable<Project>>(await _projectService.GetAllProjects(), settings);
 
         }
 
@@ -50,7 +48,7 @@ namespace Dnp.Kanban.Web.Controllers
             if (project == null)
                 return NotFound();
 
-            return DnpOk(project);
+            return DnpOk(Mapper.Map<ProjectViewModel>( project));
         }
 
         // POST: api/Project
