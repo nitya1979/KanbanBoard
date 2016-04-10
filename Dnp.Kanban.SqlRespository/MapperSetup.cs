@@ -12,11 +12,15 @@ namespace Dnp.Kanban.SqlRepository
     {
         public static void InitializeMapper()
         {
-            Mapper.CreateMap<DbProject, Project>();
-            Mapper.CreateMap<DbProjectStage, ProjectStage>();
+            
+            Mapper.Initialize(cnfg =>
+            {
+                cnfg.CreateMap<DbProject, Project>();
+                cnfg.CreateMap<DbProjectStage, ProjectStage>();
 
-            Mapper.CreateMap<Project, DbProject>();
-            Mapper.CreateMap<ProjectStage, DbProjectStage>();
+                cnfg.CreateMap<Project, DbProject>();
+                cnfg.CreateMap<ProjectStage, DbProjectStage>();
+            });
         }
     }
 }
