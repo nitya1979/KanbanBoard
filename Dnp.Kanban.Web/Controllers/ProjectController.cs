@@ -78,7 +78,7 @@ namespace Dnp.Kanban.Web.Controllers
 
         [HttpGet]
         [Route("Stages/{projectId:int}")]
-        public async Task<IHttpActionResult> Stages( int projectId)
+        public async Task<IHttpActionResult> Stages(int projectId)
         {
             if (projectId == 0)
                 return BadRequest("Product id not specified.");

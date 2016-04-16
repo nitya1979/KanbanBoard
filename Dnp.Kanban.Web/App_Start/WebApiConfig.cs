@@ -24,6 +24,7 @@ namespace Dnp.Kanban.Web
             config.SuppressDefaultHostAuthentication();
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
             config.Filters.Add(new DnpHandleErrorAttribute());
+            config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
 
             var _unityContainer = new UnityContainer();
             _unityContainer.RegisterType<IProjectRepository, SqlProjectRepository>( new InjectionConstructor( "DefaultConnection"));

@@ -22,10 +22,10 @@
                 @Html.ActionLink("KanbanBoard", "Index", "Dashboard", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" >
                     <li class="dropdown" ng-show="isAuth">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{selectedProject.Name}} <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu"  style="max-height:100px; overflow-y:auto">
                             <li ng-repeat="proj in projectList"><a href="#/Board/{{proj.ID}}" ng-click="setSelectedProject(proj.ID)">{{proj.Name}}</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a ng-click="addProject()">New Project</a></li>

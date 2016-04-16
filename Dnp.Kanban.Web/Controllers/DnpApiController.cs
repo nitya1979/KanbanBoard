@@ -9,7 +9,7 @@ namespace Dnp.Kanban.Web.Controllers
 {
     public class DnpApiController : ApiController
     {
-        public IHttpActionResult DnpOk<T>(T content)
+        protected IHttpActionResult DnpOk<T>(T content)
         {
             return new DnpOkResult<T>(content, this.Request);
         }

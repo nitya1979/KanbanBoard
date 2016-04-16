@@ -24,11 +24,12 @@ namespace Dnp.Kanban.Web
                 url: "Template/GetTemplate/{template}",
                 defaults: new { controller = "Template", action = "GetTemplate", template = UrlParameter.Optional }
                 );
-            routes.MapRoute(
-                name: "Stages",
-                url: "api/Project/Stages/{projectId}",
-                defaults: new { controller = "Project", action = "Stages", projectId = UrlParameter.Optional }
-                );
+
+            //routes.MapRoute(
+            //    name: "Stages",
+            //    url: "api/Project/Stages/{projectId}",
+            //    defaults: new { controller = "Project", action = "Stages", projectId = UrlParameter.Optional }
+            //    );
 
             routes.MapRoute(
                 name: "Default",
