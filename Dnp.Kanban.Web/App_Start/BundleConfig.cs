@@ -47,7 +47,8 @@ namespace Dnp.Kanban.Web
                       "~/app/Controller/LogoutController.js",
                       "~/app/Controller/projectController.js",
                       "~/app/Controller/dashboardController.js",
-                      "~/app/Controller/boardController.js"
+                      "~/app/Controller/boardController.js",
+                      "~/app/Controller/taskController.js"
                 ));
         }
     }

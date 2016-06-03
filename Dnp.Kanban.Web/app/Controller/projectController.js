@@ -13,6 +13,8 @@
                 $scope.project = data;
                 $scope.project.StartDate = new Date(data.StartDate);
                 $scope.project.EndDate = new Date(data.EndDate);
+
+                
             }, onError);
         } else {
             $scope.project = new Project();

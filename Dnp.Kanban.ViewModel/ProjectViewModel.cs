@@ -25,5 +25,6 @@ namespace Dnp.Kanban.ViewModel
         [DataType(DataType.Date, ErrorMessage = "Invalid end date.")]
         [Required(ErrorMessage = "Please enter end date.")]
         public DateTime EndDate { get; set; }
+
     }
 }

@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="DbProject.cs" />
     <Compile Include="DbProjectStage.cs" />
+    <Compile Include="DbTask.cs" />
     <Compile Include="KanbanDbContext.cs" />
     <Compile Include="MapperSetup.cs" />
     <Compile Include="Migrations\201601240646157_InitialSetup.cs" />
@@ -68,6 +69,10 @@
     <Compile Include="Migrations\201603170149132_Stage_Relation.cs" />
     <Compile Include="Migrations\201603170149132_Stage_Relation.Designer.cs">
       <DependentUpon>201603170149132_Stage_Relation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201605310149263_AddedTask.cs" />
+    <Compile Include="Migrations\201605310149263_AddedTask.Designer.cs">
+      <DependentUpon>201605310149263_AddedTask.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SqlProjectRepository.cs" />
@@ -92,6 +97,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603170149132_Stage_Relation.resx">
       <DependentUpon>201603170149132_Stage_Relation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201605310149263_AddedTask.resx">
+      <DependentUpon>201605310149263_AddedTask.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

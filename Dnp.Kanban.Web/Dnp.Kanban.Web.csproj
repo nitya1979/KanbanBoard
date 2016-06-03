@@ -256,6 +256,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app\Controller\boardController.js" />
+    <Content Include="app\Controller\taskController.js" />
     <Content Include="app\models.js" />
     <Content Include="app\Services\projectService.js" />
     <Content Include="Content\bootstrap-datetimepicker-build.css" />
@@ -461,6 +462,7 @@
     <Content Include="Views\Template\_dashboard.cshtml" />
     <Content Include="Views\Template\_projectDetail.cshtml" />
     <Content Include="Views\Template\_Board.cshtml" />
+    <Content Include="Views\Template\_NewTask.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

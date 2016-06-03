@@ -20,6 +20,10 @@ namespace Dnp.Kanban.SqlRepository
 
                 cnfg.CreateMap<Project, DbProject>();
                 cnfg.CreateMap<ProjectStage, DbProjectStage>();
+
+                cnfg.CreateMap<DnpTask, DbTask>();
+                cnfg.CreateMap<DbTask, DnpTask>();
+
             });
         }
     }
