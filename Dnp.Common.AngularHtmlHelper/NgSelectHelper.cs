@@ -1,47 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace Dnp.Common.AngularHtmlHelper
 {
-    public static class NgTextAreaHelper
+    public static class NgSelectHelper
     {
-        public static MvcHtmlString NgTextAreaFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression)
-        {
-            return htmlHelper.NgTextAreaFor(expression, null);
-        }
-
-        public static MvcHtmlString NgTextAreaFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes)
+        public static MvcHtmlString NgComboBoxFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, string options, string valueField, string textField, object htmlAttributes)
         {
             MemberInfo member = ((MemberExpression)expression.Body).Member;
 
-            var tagBuilder = new TagBuilder("textarea");
+            var tagBuilder = new TagBuilder("select");
+            List<TagBuilder> validationSpans = new List<TagBuilder>();
 
             tagBuilder.MergeAttribute("name", member.Name.ToLower());
-
-            NgHtmlHelper.SetHtmlAttributes(tagBuilder, htmlAttributes);
-
-            List<TagBuilder> validationSpans = new List<TagBuilder>();
 
             foreach (CustomAttributeData cs in member.CustomAttributes)
             {
                 if (cs.AttributeType == typeof(RequiredAttribute))
                 {
-                    tagBuilder.MergeAttribute("Required", string.Empty);
+                    tagBuilder.MergeAttribute("required", string.Empty);
 
                     validationSpans.Add(NgHtmlHelper.GetRequiredSpan(cs, member));
                 }
-                else if (cs.AttributeType == typeof(MaxLengthAttribute))
-                {
-                    tagBuilder.MergeAttribute("maxlength", cs.ConstructorArguments[0].Value.ToString());
-                }
             }
 
+            NgHtmlHelper.SetHtmlAttributes(tagBuilder, htmlAttributes);
+
             tagBuilder.MergeAttribute("ng-model", member.ReflectedType.Name.ToCamelCase() + "." + member.Name);
+
+            TagBuilder optionBuilder = new TagBuilder("option");
+            optionBuilder.MergeAttribute("ng-repeat", "opt in " + options);
+            optionBuilder.MergeAttribute("value", "{{opt."+valueField +"}}");
+            optionBuilder.InnerHtml = "{{opt." + textField + "}}";
+
+            tagBuilder.InnerHtml = optionBuilder.ToString();
 
             string finalHtml = tagBuilder.ToString(TagRenderMode.Normal);
 

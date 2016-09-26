@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommonDataService.cs" />
+    <Compile Include="DnpPriority.cs" />
+    <Compile Include="ICommonDataRepository.cs" />
     <Compile Include="IProjectRepository.cs" />
     <Compile Include="Priority.cs" />
     <Compile Include="Project.cs" />

@@ -1,8 +1,16 @@
 ﻿(function () {
     var app = angular.module("kanbanBoard");
 
-    var taskController = function ($scope, $uibModalInstance) {
-        $scope.Message = "This is model from template (NEW)";
+    var taskController = function ($scope, $uibModalInstance, commonDataService, taskId) {
+        $scope.dnpTaskViewModel = new DnpTask();
+
+        commonDataService.getPriorities().then(function (data) {
+            $scope.priorityList = data;
+        },
+        function (result) {
+            alert(JSON.stringify(result));
+        });
+
         $scope.ok = function () {
             $uibModalInstance.close("Modal Data");
         };

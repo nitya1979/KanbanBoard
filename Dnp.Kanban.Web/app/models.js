@@ -13,3 +13,11 @@
         this.className = "";
         this.height = "";
     }
+
+    function DnpTask() {
+        this.TaskID = 0;
+        this.StageID = "";
+        this.Priority = 0;
+        this.ShortDescription = "";
+        this.LongDescription = "";
+    }

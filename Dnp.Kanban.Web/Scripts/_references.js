@@ -10,6 +10,7 @@
 /// <reference path="../app/controller/taskcontroller.js" />
 /// <reference path="../app/models.js" />
 /// <reference path="../app/services/accountservice.js" />
+/// <reference path="../app/services/commondataservice.js" />
 /// <reference path="../app/services/projectservice.js" />
 /// <reference path="../app/services/sharedservice.js" />
 /// <reference path="../app/sessioninjector.js" />

@@ -6,12 +6,18 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
+using System.Web.Routing;
 
 namespace Dnp.Common.AngularHtmlHelper
 {
     public static class NgTextBoxHelper
     {
-        public static MvcHtmlString NgTextBoxFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, string cssClass)
+        public static MvcHtmlString NgTextBoxFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression)
+        {
+            return htmlHelper.NgTextBoxFor(expression, null);
+        }
+
+        public static MvcHtmlString NgTextBoxFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, object htmlAttributes)
         {
 
             MemberInfo member = ((MemberExpression)expression.Body).Member;
@@ -53,7 +59,8 @@ namespace Dnp.Common.AngularHtmlHelper
                 tagBuilder.MergeAttribute("name", member.Name.ToLower());
             }
 
-            tagBuilder.AddCssClass(cssClass);
+            NgHtmlHelper.SetHtmlAttributes(tagBuilder, htmlAttributes);
+
             tagBuilder.MergeAttribute("ng-model", member.ReflectedType.Name.ToCamelCase() +"."+ member.Name);
 
             string finalHtml = tagBuilder.ToString(TagRenderMode.SelfClosing);

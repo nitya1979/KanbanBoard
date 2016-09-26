@@ -24,6 +24,9 @@ namespace Dnp.Kanban.SqlRepository
                 cnfg.CreateMap<DnpTask, DbTask>();
                 cnfg.CreateMap<DbTask, DnpTask>();
 
+                cnfg.CreateMap<DnpPriority, DbPriority>();
+                cnfg.CreateMap<DbPriority, DnpPriority>();
+
             });
         }
     }

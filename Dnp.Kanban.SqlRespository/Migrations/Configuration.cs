@@ -27,6 +27,12 @@ namespace Dnp.Kanban.SqlRepository.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            context.DbPriority.AddOrUpdate(p => p.Name,
+              new DbPriority { Name = "Critical" },
+              new DbPriority { Name = "High" },
+              new DbPriority { Name = "Medium" },
+              new DbPriority { Name = "Low" });
         }
     }
 }

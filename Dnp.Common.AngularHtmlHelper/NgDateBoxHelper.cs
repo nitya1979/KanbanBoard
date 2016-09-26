@@ -7,13 +7,14 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace Dnp.Common.AngularHtmlHelper
 {
     public static class NgDateBoxHelper 
     {
         public static MvcHtmlString NgDateBoxFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, 
-            string cssClass, string icon, string onClick, string format, string strIsOpen, string dateOptions)
+           object htmlAttributes, string icon, string onClick, string format, string strIsOpen, string dateOptions)
         {
             MemberInfo member = ((MemberExpression)expression.Body).Member;
             
@@ -51,7 +52,10 @@ namespace Dnp.Common.AngularHtmlHelper
                 tagBuilder.MergeAttribute("name", member.Name.ToLower());
             }
             tagBuilder.MergeAttribute("readonly", "readonly");
-            tagBuilder.AddCssClass(cssClass);
+            RouteValueDictionary htmlAttr = new RouteValueDictionary(htmlAttributes);
+
+            NgHtmlHelper.SetHtmlAttributes(tagBuilder, htmlAttributes);
+
             tagBuilder.MergeAttribute("ng-model", member.ReflectedType.Name.ToCamelCase() + "." + member.Name);
 
             if (string.IsNullOrEmpty(format)) format = "MM/dd/yyyy";

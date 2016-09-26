@@ -26,5 +26,7 @@ namespace Dnp.Kanban.SqlRepository
         public DbSet<DbProjectStage> DbProjectStage { get; set; }
 
         public DbSet<DbTask> DbTask { get; set; }
+
+        public DbSet<DbPriority> DbPriority { get; set; }
     }
 }

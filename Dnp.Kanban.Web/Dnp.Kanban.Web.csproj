@@ -235,6 +235,7 @@
     <Compile Include="App_Start\UnityResolover.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
     <Compile Include="Controllers\DnpApiController.cs" />
     <Compile Include="Controllers\DnpOkResult.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -258,6 +259,7 @@
     <Content Include="app\Controller\boardController.js" />
     <Content Include="app\Controller\taskController.js" />
     <Content Include="app\models.js" />
+    <Content Include="app\Services\commonDataService.js" />
     <Content Include="app\Services\projectService.js" />
     <Content Include="Content\bootstrap-datetimepicker-build.css" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -462,7 +464,7 @@
     <Content Include="Views\Template\_dashboard.cshtml" />
     <Content Include="Views\Template\_projectDetail.cshtml" />
     <Content Include="Views\Template\_Board.cshtml" />
-    <Content Include="Views\Template\_NewTask.cshtml" />
+    <Content Include="Views\Template\_taskDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -494,6 +496,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

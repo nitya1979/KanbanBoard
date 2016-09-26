@@ -45,9 +45,14 @@
         $scope.open = function (size) {
             var modelInstance = $uibModal.open({
                 animation: true,
-                templateUrl: "/Template/GetAuthTemplate/_NewTask",
+                templateUrl: "/Template/GetAuthTemplate/_taskDetail",
                 controller: "taskController",
-                size: size
+                size: size,
+                resolve: {
+                    taskId: function () {
+                        return 101;
+                    }
+                }
             });
 
             modelInstance.result.then(function (data) {

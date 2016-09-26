@@ -1,4 +1,24 @@
 ﻿@model List<Dnp.Kanban.Domain.ProjectStage>
+<script>
+    function allowDrop(ev) {
+        if (ev.target.id != "drgText") {
+            ev.preventDefault();
+        }
+    }
+
+    function drag(ev) {
+        ev.dataTransfer.setData("text", ev.target.id);
+    }
+
+    function drop(ev) {
+        if (ev.target.id != "drgText") {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            ev.target.appendChild(document.getElementById(data));
+        }
+    }
+</script>
+
 <div class="row">
     <div class="col-md-6">
         <h3>{{ProjectName}}</h3>
@@ -16,31 +36,24 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12">
+    <dv class="col-md-12">
         <table class="table table-responsive table-bordered" style="background-color:white; height:100%">
             <tr>
-                <td ng-repeat="stage in stages">
+                <td ng-repeat="stage in stages" width="33%">
                     <span>{{stage.StageName}}</span>
                     <button class="btn btn-xs btn-primary glyphicon glyphicon-plus pull-right" />
                 </td>
             </tr>
             <tr>
-                <td ng-repeat="stage in stages">
-                    <div class="col-md-4">
-                        <div class="panel panel-warning">
-                            <div class="panel-heading">
-                                <p class="panel-title">New Task</p>
-                            </div>
-                            <div class="panel-body">
-                                test
-                            </div>
-                        </div>
+                <td ng-repeat="stage in stages" ondrop="drop(event)" ondragover="allowDrop(event)">
+                    <div id="drgText" ondragover="allowDrop(event)" style="border:1px solid silver; border-left:5px solid green" class="col-sm-6" draggable="true" ondragstart="drag(event)">
+                        TEST TASK
                     </div>
                 </td>
 
             </tr>
         </table>
-    </div>
+</div>
 </div>
 
 <div class="modal fade bs-example-modal-lg" id="editStageModal" tabindex="-1" role="dialog">

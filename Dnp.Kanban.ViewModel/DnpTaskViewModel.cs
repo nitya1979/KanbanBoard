@@ -7,21 +7,23 @@ using System.Threading.Tasks;
 
 namespace Dnp.Kanban.ViewModel
 {
-    class DnpTaskViewModel
+    public class DnpTaskViewModel
     {
         public int TaskID { get; set; }
 
-        [Required(ErrorMessage = "StageID Required")]
         public int StageID { get; set; }
 
         [Required(ErrorMessage = "Priority Required")]
+        [Display(Description = "Priority", Name = "Priority")]
         public int Priority { get; set; }
 
         [Required(ErrorMessage ="Short Description is required.")]
         [MaxLength(255)]
+        [Display(Description = "Summary", Name ="Summary")]
         public string ShortDescription { get; set; }
 
         [MaxLength(400)]
+        [Display(Name = "Detailed Description", Description ="Detailed Description")]
         public string LongDescription { get; set; }
     }
 }

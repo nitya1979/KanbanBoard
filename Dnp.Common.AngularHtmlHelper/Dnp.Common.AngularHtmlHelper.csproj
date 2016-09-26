@@ -71,9 +71,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HelperConstants.cs" />
+    <Compile Include="NgCheckBoxHelper.cs" />
     <Compile Include="NgDateBoxHelper.cs" />
     <Compile Include="NgFormHelper.cs" />
     <Compile Include="NgHtmlHelper.cs" />
+    <Compile Include="NgListBoxHelper.cs" />
+    <Compile Include="NgRadioButtonHelper.cs" />
+    <Compile Include="NgSelectHelper.cs" />
     <Compile Include="NgTextAreaHelper.cs" />
     <Compile Include="NgTextBoxHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

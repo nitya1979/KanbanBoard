@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbPriority.cs" />
     <Compile Include="DbProject.cs" />
     <Compile Include="DbProjectStage.cs" />
     <Compile Include="DbTask.cs" />
@@ -74,7 +75,12 @@
     <Compile Include="Migrations\201605310149263_AddedTask.Designer.cs">
       <DependentUpon>201605310149263_AddedTask.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201609252312441_Added_Priority.cs" />
+    <Compile Include="Migrations\201609252312441_Added_Priority.Designer.cs">
+      <DependentUpon>201609252312441_Added_Priority.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="SqlCommonDataRepository.cs" />
     <Compile Include="SqlProjectRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -100,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201605310149263_AddedTask.resx">
       <DependentUpon>201605310149263_AddedTask.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201609252312441_Added_Priority.resx">
+      <DependentUpon>201609252312441_Added_Priority.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
