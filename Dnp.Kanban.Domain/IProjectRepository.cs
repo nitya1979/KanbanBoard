@@ -18,6 +18,8 @@ namespace Dnp.Kanban.Domain
 
         Task< List<DnpTask>> GetProjectTask(int projectId);
 
-        
+        DnpTask GetTask(int taskId);
+
+        Task<int> SaveTask(DnpTask task);
     }
 }

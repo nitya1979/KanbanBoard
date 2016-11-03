@@ -45,6 +45,7 @@
     <Compile Include="DnpPriority.cs" />
     <Compile Include="ICommonDataRepository.cs" />
     <Compile Include="IProjectRepository.cs" />
+    <Compile Include="ITaskRepository.cs" />
     <Compile Include="Priority.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="ProjectService.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result.cs" />
     <Compile Include="DnpTask.cs" />
+    <Compile Include="TaskService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

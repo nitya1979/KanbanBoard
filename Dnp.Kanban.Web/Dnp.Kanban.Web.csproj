@@ -241,6 +241,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="Controllers\ProjectStageController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\TemplateController.cs" />
     <Compile Include="Filters\DnpHandleErrorAttribute.cs" />
     <Compile Include="Filters\ValidationFilterAttribute.cs" />

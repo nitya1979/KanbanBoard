@@ -83,6 +83,7 @@
     <Compile Include="SqlCommonDataRepository.cs" />
     <Compile Include="SqlProjectRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SqlTaskRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Dnp.Kanban.Domain\Dnp.Kanban.Domain.csproj">

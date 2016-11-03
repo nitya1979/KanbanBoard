@@ -13,7 +13,7 @@ namespace Dnp.Kanban.Domain
         public CommonDataService(ICommonDataRepository repository_)
         {
             if (repository_ == null)
-                throw new ArgumentNullException("IcommonDataRepository", "Repository is not defined.");
+                throw new ArgumentNullException("ICommonDataRepository", "Repository is not defined.");
 
             this._repository = repository_;
         }

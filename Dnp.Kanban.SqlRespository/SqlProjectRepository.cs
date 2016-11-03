@@ -70,6 +70,16 @@ namespace Dnp.Kanban.SqlRepository
                        
         }
 
+        public DnpTask GetTask(int taskId)
+        {
+            if (taskId == 0)
+                throw new Exception("TaskID is undefined.");
+
+            var task = _kanbanContext.DbTask.Find(taskId);
+
+            return Mapper.Map<DnpTask>(task);
+        }
+
         public async Task<int> SaveProject(Project project)
         {
             DbProject dbProject = Mapper.Map<DbProject>(project);
@@ -85,6 +95,23 @@ namespace Dnp.Kanban.SqlRepository
             }
             else
                 _kanbanContext.Entry<DbProject>(dbProject).State = EntityState.Modified;
+
+            return await _kanbanContext.SaveChangesAsync();
+        }
+
+        public async Task<int> SaveTask(DnpTask task)
+        {
+
+            DbTask dbTask = Mapper.Map<DbTask>(task);
+
+            if( dbTask.TaskID == 0)
+            {
+                _kanbanContext.DbTask.Add(dbTask);
+            }
+            else
+            {
+                _kanbanContext.Entry<DbTask>(dbTask).State = EntityState.Modified;
+            }
 
             return await _kanbanContext.SaveChangesAsync();
         }

@@ -50,5 +50,12 @@ namespace Dnp.Kanban.Domain
             return await _projectRepo.GetProjectTask(projectId);
         }
 
+        public Task<DnpTask> GetTask(int taskId)
+        {
+            return Task.Factory.StartNew<DnpTask>(() =>
+            {
+                return _projectRepo.GetTask(taskId);
+            });
+        }
     }
 }
