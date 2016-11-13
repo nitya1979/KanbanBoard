@@ -16,6 +16,8 @@ namespace Dnp.Kanban.Web
             Mapper.Configuration.CreateMap<ProjectStageViewModel, ProjectStage>();
             Mapper.Configuration.CreateMap<Project, ProjectViewModel>();
             Mapper.Configuration.CreateMap<ProjectStageViewModel, ProjectStage>();
+            Mapper.Configuration.CreateMap<DnpTaskViewModel, DnpTask>();
+            Mapper.Configuration.CreateMap<DnpTask, DnpTaskViewModel>();
         }
     }
 }

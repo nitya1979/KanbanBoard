@@ -262,6 +262,7 @@
     <Content Include="app\models.js" />
     <Content Include="app\Services\commonDataService.js" />
     <Content Include="app\Services\projectService.js" />
+    <Content Include="app\Services\taskService.js" />
     <Content Include="Content\bootstrap-datetimepicker-build.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />

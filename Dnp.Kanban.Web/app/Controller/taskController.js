@@ -1,12 +1,29 @@
 ﻿(function () {
     var app = angular.module("kanbanBoard");
 
-    var taskController = function ($scope, $uibModalInstance, commonDataService, taskId) {
-        $scope.dnpTaskViewModel = new DnpTask();
+    var taskController = function ($scope, $uibModalInstance, commonDataService, taskId, stages, taskService) {
+
+        $scope.Stages = stages;
+
+        var onError = function (result) {
+            alert(JSON.stringify(result));
+        };
+
+        if (taskId == 0) {
+            $scope.dnpTaskViewModel = new DnpTask();
+            $scope.dnpTaskViewModel.StageID = stages[0].ID;
+        }
+        else {
+            taskService.getTask(taskId).then(function (data) {
+                $scope.dnpTaskViewModel = data;
+            }, onError);
+        }
+        
 
         commonDataService.getPriorities().then(function (data) {
             $scope.priorityList = data;
         },
+
         function (result) {
             alert(JSON.stringify(result));
         });

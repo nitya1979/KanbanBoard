@@ -42,6 +42,7 @@ namespace Dnp.Kanban.Web
                       "~/app/Services/sharedService.js",
                       "~/app/Services/projectService.js",
                       "~/app/Services/commonDataService.js",
+                      "~/app/Services/taskService.js",
                       "~/app/Controller/menuController.js",
                       "~/app/Controller/RegistrationController.js",
                       "~/app/Controller/LoginController.js",

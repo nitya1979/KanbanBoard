@@ -35,6 +35,8 @@ namespace Dnp.Common.AngularHtmlHelper
             NgHtmlHelper.SetHtmlAttributes(tagBuilder, htmlAttributes);
 
             tagBuilder.MergeAttribute("ng-model", member.ReflectedType.Name.ToCamelCase() + "." + member.Name);
+            if (((PropertyInfo)member).PropertyType.FullName == "System.Int32")
+                tagBuilder.MergeAttribute("convert-to-number", "true");
 
             TagBuilder optionBuilder = new TagBuilder("option");
             optionBuilder.MergeAttribute("ng-repeat", "opt in " + options);
@@ -50,7 +52,7 @@ namespace Dnp.Common.AngularHtmlHelper
                 finalHtml += span.ToString(TagRenderMode.Normal);
             }
 
-            return MvcHtmlString.Create(finalHtml);
+            return MvcHtmlString.Create(finalHtml.Replace("convert-to-number=\"true\"", "convert-to-number"));
 
         }
     }

@@ -68,6 +68,7 @@ namespace Dnp.Kanban.Web.Controllers
         // DELETE: api/Project/5
         public void Delete(int id)
         {
+
         }
 
         [HttpGet]

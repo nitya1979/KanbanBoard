@@ -29,8 +29,10 @@ namespace Dnp.Kanban.Web
             var _unityContainer = new UnityContainer();
             _unityContainer.RegisterType<IProjectRepository, SqlProjectRepository>( new InjectionConstructor( "DefaultConnection"));
             _unityContainer.RegisterType<ICommonDataRepository, SqlCommonDataRepository>(new InjectionConstructor("DefaultConnection"));
+            _unityContainer.RegisterType<ITaskRepository, SqlTaskRepository>(new InjectionConstructor("DefaultConnection"));
             _unityContainer.RegisterType<IHttpController, ProjectController>();
             _unityContainer.RegisterType<IHttpController, CommonController>();
+            _unityContainer.RegisterType<IHttpController, TaskController>();
 
             config.DependencyResolver = new UnityResolover(_unityContainer);
 

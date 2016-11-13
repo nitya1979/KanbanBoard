@@ -23,12 +23,12 @@ namespace Dnp.Kanban.Domain
             return await _taskRepository.GetTaskByProject(projectId);
         }
 
-        public DnpTask GetTask(int taskId)
+        public async Task<DnpTask> GetTask(int taskId)
         {
             if (taskId == 0)
                 throw new Exception("taskId cannot be 0");
 
-            return _taskRepository.GetTask(taskId);
+            return await _taskRepository.GetTask(taskId);
         }
 
         public async Task<int> SaveTask(DnpTask task)

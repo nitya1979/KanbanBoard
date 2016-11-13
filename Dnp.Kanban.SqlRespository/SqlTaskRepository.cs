@@ -17,16 +17,39 @@ namespace Dnp.Kanban.SqlRepository
             _dbContext = new KanbanDbContext(defaultConnection);
 
         }
-        public DnpTask GetTask(int taskId)
+
+        public async Task Delete(int taskId)
         {
-            DbTask task = _dbContext.DbTask.Find(taskId);
+            DbTask task = await _dbContext.DbTask.FindAsync(taskId);
+
+            if (task != null)
+            {
+                _dbContext.DbTask.Remove(task);
+                await _dbContext.SaveChangesAsync();
+            }
+        }
+
+        public async Task<DnpTask> GetTask(int taskId)
+        {
+            DbTask task = await _dbContext.DbTask.FindAsync(taskId);
 
             return Mapper.Map<DnpTask>(task);
         }
 
         public Task<List<DnpTask>> GetTaskByProject(int projectId)
         {
-            throw new NotImplementedException();
+            return Task.Factory.StartNew<List<DnpTask>>(() =>
+            {
+                var tasks = _dbContext.DbProjectStage.Join(_dbContext.DbTask, p => p, t => t.ProjectStage, (p, t) => t).ToList();
+
+                List<DnpTask> dnpTasks = new List<DnpTask>();
+                foreach (DbTask t in tasks)
+                {
+                    dnpTasks.Add(Mapper.Map<DnpTask>(t));
+                }
+
+                return dnpTasks;
+            });
         }
 
         public Task<int> SaveTask(DnpTask task)

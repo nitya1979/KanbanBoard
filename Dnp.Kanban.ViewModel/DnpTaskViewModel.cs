@@ -11,6 +11,7 @@ namespace Dnp.Kanban.ViewModel
     {
         public int TaskID { get; set; }
 
+        [Display(Description ="Current Stage")]
         public int StageID { get; set; }
 
         [Required(ErrorMessage = "Priority Required")]

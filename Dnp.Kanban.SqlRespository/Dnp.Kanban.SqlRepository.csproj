@@ -79,6 +79,10 @@
     <Compile Include="Migrations\201609252312441_Added_Priority.Designer.cs">
       <DependentUpon>201609252312441_Added_Priority.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611070330103_Added_ProjectStage_rel.cs" />
+    <Compile Include="Migrations\201611070330103_Added_ProjectStage_rel.Designer.cs">
+      <DependentUpon>201611070330103_Added_ProjectStage_rel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SqlCommonDataRepository.cs" />
     <Compile Include="SqlProjectRepository.cs" />
@@ -110,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201609252312441_Added_Priority.resx">
       <DependentUpon>201609252312441_Added_Priority.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611070330103_Added_ProjectStage_rel.resx">
+      <DependentUpon>201611070330103_Added_ProjectStage_rel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

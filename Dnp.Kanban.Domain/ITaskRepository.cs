@@ -9,7 +9,8 @@ namespace Dnp.Kanban.Domain
     public interface ITaskRepository
     {
         Task<List<DnpTask>> GetTaskByProject(int projectId);
-        DnpTask GetTask(int taskId);
+        Task<DnpTask> GetTask(int taskId);
         Task<int> SaveTask(DnpTask task);
+        Task Delete(int taskId);
     }
 }

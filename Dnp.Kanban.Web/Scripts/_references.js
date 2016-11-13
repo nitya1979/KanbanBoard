@@ -13,6 +13,7 @@
 /// <reference path="../app/services/commondataservice.js" />
 /// <reference path="../app/services/projectservice.js" />
 /// <reference path="../app/services/sharedservice.js" />
+/// <reference path="../app/services/taskservice.js" />
 /// <reference path="../app/sessioninjector.js" />
 /// <reference path="ai.0.15.0-build58334.js" />
 /// <reference path="angular.min.js" />

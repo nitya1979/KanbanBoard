@@ -17,7 +17,6 @@
 
         var saveProject = function (project) {
             var url = "/api/Project";
-            alert(JSON.stringify(project));
             if (project.ID != 0)
                 url = url + "/" + project.ID;
 

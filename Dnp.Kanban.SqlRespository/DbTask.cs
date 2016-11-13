@@ -26,5 +26,7 @@ namespace Dnp.Kanban.SqlRepository
 
         public int Priority { get; set; }
 
+        public virtual DbProjectStage ProjectStage { get; set; }
+
     }
 }

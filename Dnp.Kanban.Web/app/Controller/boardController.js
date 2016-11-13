@@ -2,7 +2,7 @@
 
     var app = angular.module("kanbanBoard");
 
-    var boardController = function ($scope, $routeParams, projectService, $uibModal) {
+    var boardController = function ($scope, $routeParams, projectService, taskService, $uibModal) {
 
         projectService.getProject($routeParams.projectId).then(function (data) {
 
@@ -39,8 +39,20 @@
             }
             );
         };
+        
+        var getTasks = function () {
+            
+            taskService.getTasks($routeParams.projectId)
+                       .then(function (data) {
+                           alert(JSON.stringify(data));
+                       }, function (result) {
+                           alert(JSON.stringify(result));
+                       });
+
+        };
 
         getStages();
+        getTasks();
 
         $scope.open = function (size) {
             var modelInstance = $uibModal.open({
@@ -50,7 +62,10 @@
                 size: size,
                 resolve: {
                     taskId: function () {
-                        return 101;
+                        return 0;
+                    },
+                    stages: function () {
+                        return $scope.stages;
                     }
                 }
             });
