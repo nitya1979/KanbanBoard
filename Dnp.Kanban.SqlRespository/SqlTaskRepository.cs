@@ -40,7 +40,9 @@ namespace Dnp.Kanban.SqlRepository
         {
             return Task.Factory.StartNew<List<DnpTask>>(() =>
             {
-                var tasks = _dbContext.DbProjectStage.Join(_dbContext.DbTask, p => p, t => t.ProjectStage, (p, t) => t).ToList();
+                var tasks = _dbContext.DbProjectStage.Join(_dbContext.DbTask, p => p, t => t.ProjectStage, (p, t) => new { p, t })
+                                                     .Where( o => o.p.ProjectID == projectId)
+                                                     .Select( j => j.t).ToList();
 
                 List<DnpTask> dnpTasks = new List<DnpTask>();
                 foreach (DbTask t in tasks)

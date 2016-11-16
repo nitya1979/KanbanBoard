@@ -20,4 +20,5 @@
         this.Priority = 0;
         this.ShortDescription = "";
         this.LongDescription = "";
+        this.DueDate = new Date();
     }

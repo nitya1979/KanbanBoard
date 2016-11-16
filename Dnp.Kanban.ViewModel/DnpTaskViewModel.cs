@@ -11,7 +11,7 @@ namespace Dnp.Kanban.ViewModel
     {
         public int TaskID { get; set; }
 
-        [Display(Description ="Current Stage")]
+        [Display(Name = "Current Stage", Description ="Current Stage")]
         public int StageID { get; set; }
 
         [Required(ErrorMessage = "Priority Required")]
@@ -26,5 +26,8 @@ namespace Dnp.Kanban.ViewModel
         [MaxLength(400)]
         [Display(Name = "Detailed Description", Description ="Detailed Description")]
         public string LongDescription { get; set; }
+
+        [Display(Name = "Due Date", Description = "Due Date")]
+        public DateTime? DueDate { get; set; }
     }
 }

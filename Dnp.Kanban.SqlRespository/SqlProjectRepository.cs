@@ -96,7 +96,9 @@ namespace Dnp.Kanban.SqlRepository
             else
                 _kanbanContext.Entry<DbProject>(dbProject).State = EntityState.Modified;
 
-            return await _kanbanContext.SaveChangesAsync();
+            await _kanbanContext.SaveChangesAsync();
+
+            return dbProject.ID;
         }
 
         public async Task<int> SaveTask(DnpTask task)

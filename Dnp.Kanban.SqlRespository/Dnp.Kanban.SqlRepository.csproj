@@ -83,6 +83,10 @@
     <Compile Include="Migrations\201611070330103_Added_ProjectStage_rel.Designer.cs">
       <DependentUpon>201611070330103_Added_ProjectStage_rel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201611130458411_Added Task DueDate.cs" />
+    <Compile Include="Migrations\201611130458411_Added Task DueDate.Designer.cs">
+      <DependentUpon>201611130458411_Added Task DueDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SqlCommonDataRepository.cs" />
     <Compile Include="SqlProjectRepository.cs" />
@@ -117,6 +121,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201611070330103_Added_ProjectStage_rel.resx">
       <DependentUpon>201611070330103_Added_ProjectStage_rel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201611130458411_Added Task DueDate.resx">
+      <DependentUpon>201611130458411_Added Task DueDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

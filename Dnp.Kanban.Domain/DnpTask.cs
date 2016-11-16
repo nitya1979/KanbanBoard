@@ -16,6 +16,8 @@ namespace Dnp.Kanban.Domain
 
         public string LongDescription { get; set; }
 
+        public DateTime? DueDate { get; set; }
+
         public Priority Priority { get; set; }
 
     }

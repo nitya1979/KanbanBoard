@@ -19,6 +19,19 @@
             }, onError);
         }
         
+        $scope.dueDateOptions = {
+            //dateDisabled: disabled,
+            formatYear: 'yy',
+            startingDay: 1
+        };
+
+        $scope.dueDatePopup = {
+            opened: false
+        };
+
+        $scope.dueDateOpen = function () {
+            $scope.dueDatePopup.opened = true;
+        };
 
         commonDataService.getPriorities().then(function (data) {
             $scope.priorityList = data;
