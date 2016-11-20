@@ -7,13 +7,13 @@ namespace Dnp.Kanban.SqlRepository.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class Added_ProjectStage_rel : IMigrationMetadata
+    public sealed partial class Correct_ForeinKey_1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Added_ProjectStage_rel));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Correct_ForeinKey_1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201611070330103_Added_ProjectStage_rel"; }
+            get { return "201611171146134_Correct_ForeinKey_1"; }
         }
         
         string IMigrationMetadata.Source

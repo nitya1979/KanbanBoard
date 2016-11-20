@@ -54,9 +54,20 @@ namespace Dnp.Kanban.SqlRepository
             });
         }
 
-        public Task<int> SaveTask(DnpTask task)
+        public async Task<int> SaveTask(DnpTask task)
         {
-            throw new NotImplementedException();
+            DbTask dbTask = Mapper.Map<DbTask>(task);
+
+            _dbContext.DbTask.Add(dbTask);
+
+            if (dbTask.TaskID == 0)
+                _dbContext.DbTask.Add(dbTask);
+            else
+                _dbContext.Entry<DbTask>(dbTask).State = System.Data.Entity.EntityState.Modified;
+
+            await _dbContext.SaveChangesAsync();
+
+            return dbTask.TaskID;
         }
     }
 }

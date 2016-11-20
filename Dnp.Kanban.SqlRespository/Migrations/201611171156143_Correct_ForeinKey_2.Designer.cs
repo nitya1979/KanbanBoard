@@ -7,13 +7,13 @@ namespace Dnp.Kanban.SqlRepository.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class AddedTaskDueDate : IMigrationMetadata
+    public sealed partial class Correct_ForeinKey_2 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddedTaskDueDate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Correct_ForeinKey_2));
         
         string IMigrationMetadata.Id
         {
-            get { return "201611130458411_Added Task DueDate"; }
+            get { return "201611171156143_Correct_ForeinKey_2"; }
         }
         
         string IMigrationMetadata.Source

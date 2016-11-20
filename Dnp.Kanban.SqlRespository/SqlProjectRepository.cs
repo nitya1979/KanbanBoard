@@ -62,7 +62,7 @@ namespace Dnp.Kanban.SqlRepository
         public async Task<List<DnpTask>> GetProjectTask(int projectId)
         {
             var tasks = await (from t in _kanbanContext.DbTask
-                        join s in _kanbanContext.DbProjectStage on t.StageID equals s.ID
+                        join s in _kanbanContext.DbProjectStage on t.ProjectStageID equals s.ID
                         where s.ProjectID == projectId
                         select Mapper.Map<DnpTask>( t)).ToListAsync();
 

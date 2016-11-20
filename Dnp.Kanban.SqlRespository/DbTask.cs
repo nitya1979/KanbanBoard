@@ -15,7 +15,7 @@ namespace Dnp.Kanban.SqlRepository
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int TaskID { get; set; }
 
-        public int StageID { get; set; }
+        public int ProjectStageID { get; set; }
 
         [MaxLength(255)]
         [Required]
@@ -28,7 +28,8 @@ namespace Dnp.Kanban.SqlRepository
 
         public DateTime? DueDate { get; set; }
 
-        public virtual DbProjectStage ProjectStage { get; set; }
+        [ForeignKey("ProjectStageID")]
+        public DbProjectStage ProjectStage { get; set; }
 
     }
 }

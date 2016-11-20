@@ -22,5 +22,7 @@ namespace Dnp.Kanban.SqlRepository
         public string StageName { get; set; }
 
         public virtual DbProject Project { get; set; }
+
+        public ICollection<DbTask> Tasks;
     }
 }

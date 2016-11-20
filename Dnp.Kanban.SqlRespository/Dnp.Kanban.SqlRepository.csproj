@@ -79,13 +79,13 @@
     <Compile Include="Migrations\201609252312441_Added_Priority.Designer.cs">
       <DependentUpon>201609252312441_Added_Priority.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611070330103_Added_ProjectStage_rel.cs" />
-    <Compile Include="Migrations\201611070330103_Added_ProjectStage_rel.Designer.cs">
-      <DependentUpon>201611070330103_Added_ProjectStage_rel.cs</DependentUpon>
+    <Compile Include="Migrations\201611171146134_Correct_ForeinKey_1.cs" />
+    <Compile Include="Migrations\201611171146134_Correct_ForeinKey_1.Designer.cs">
+      <DependentUpon>201611171146134_Correct_ForeinKey_1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201611130458411_Added Task DueDate.cs" />
-    <Compile Include="Migrations\201611130458411_Added Task DueDate.Designer.cs">
-      <DependentUpon>201611130458411_Added Task DueDate.cs</DependentUpon>
+    <Compile Include="Migrations\201611171156143_Correct_ForeinKey_2.cs" />
+    <Compile Include="Migrations\201611171156143_Correct_ForeinKey_2.Designer.cs">
+      <DependentUpon>201611171156143_Correct_ForeinKey_2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SqlCommonDataRepository.cs" />
@@ -119,11 +119,11 @@
     <EmbeddedResource Include="Migrations\201609252312441_Added_Priority.resx">
       <DependentUpon>201609252312441_Added_Priority.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611070330103_Added_ProjectStage_rel.resx">
-      <DependentUpon>201611070330103_Added_ProjectStage_rel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611171146134_Correct_ForeinKey_1.resx">
+      <DependentUpon>201611171146134_Correct_ForeinKey_1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201611130458411_Added Task DueDate.resx">
-      <DependentUpon>201611130458411_Added Task DueDate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201611171156143_Correct_ForeinKey_2.resx">
+      <DependentUpon>201611171156143_Correct_ForeinKey_2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
