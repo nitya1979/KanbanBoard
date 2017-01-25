@@ -1,0 +1,10 @@
+﻿<div class="panel panel-default card" style="background-color:#FAFAFA" ng-class="{'card-critical': task.Priority ===1,
+                              'card-high': task.Priority === 2,
+                              'card-medium': task.Priority === 3,
+                              'card-low':task.Priority === 4}"  >
+    <div class="panel-body">
+        <div class="card-title"><a ng-click="open()">{{task.ShortDescription}}</a></div>
+        <span class="glyphicon glyphicon-time"></span> {{task.DueDate}} | <span class="glyphicon glyphicon-stats"></span>
+        <!--Priority: <priority-updater selected="task.Priority" priorities="priorities" on-Priority-Update="updatePriority(task.Priority)"></priority-updater>-->
+    </div>
+</div>

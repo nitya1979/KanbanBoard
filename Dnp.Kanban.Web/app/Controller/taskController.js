@@ -14,7 +14,8 @@
             $scope.dnpTaskViewModel.StageID = stages[0].ID;
         }
         else {
-            taskService.getTask(taskId).then(function (data) {
+            taskService.getTask(stages[0].ProjectID, taskId).then(function (data) {
+               
                 $scope.dnpTaskViewModel = data;
             }, onError);
         }
@@ -35,14 +36,17 @@
 
         commonDataService.getPriorities().then(function (data) {
             $scope.priorityList = data;
-        },
-
-        function (result) {
+        },function (result) {
             alert(JSON.stringify(result));
-        });
+            });
 
         $scope.ok = function () {
-            $uibModalInstance.close("Modal Data");
+
+            taskService.saveTask(stages[0].ProjectID, $scope.dnpTaskViewModel).then(function (data) {
+                $uibModalInstance.close(data);
+
+            }, onerror);
+
         };
 
         $scope.cancel = function () {

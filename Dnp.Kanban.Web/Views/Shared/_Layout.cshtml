@@ -10,7 +10,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/angular")
 </head>
-<body style="background-color:#ebebeb">
+<body style="background-color:darkgray">
     <div class="navbar navbar-inverse navbar-fixed-top" ng-controller="menuController">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -19,13 +19,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("KanbanBoard", "Index", "Dashboard", new { area = "" }, new { @class = "navbar-brand" })
+                <a href="/#/Dashboard" class="navbar-brand">KanbanBoard</a>
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav" >
+                <ul class="nav navbar-nav">
                     <li class="dropdown" ng-show="isAuth">
                         <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{selectedProject.Name}} <span class="caret"></span></a>
-                        <ul class="dropdown-menu"  style="max-height:100px; overflow-y:auto">
+                        <ul class="dropdown-menu" style="max-height:100px; overflow-y:auto">
                             <li ng-repeat="proj in projectList"><a href="#/Board/{{proj.ID}}" ng-click="setSelectedProject(proj.ID)">{{proj.Name}}</a></li>
                             <li role="separator" class="divider"></li>
                             <li><a ng-click="addProject()">New Project</a></li>
@@ -45,18 +45,46 @@
             </div>
         </div>
     </div>
-
-
-    <div class="container-fluid" style="padding-top:20px;" ng-view="/Login">
-        @RenderBody()
-
-    </div>
-    <footer style="position:absolute; z-index:100001; height:60px; bottom:0px; width:100%; background-color:darkgrey; padding-top:10px">
-        <div class="container-fluid">
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+    <div id="wrapper" >
+        <div id="sidebar-wrapper">
+            <ul id="sidebar_menu" class="sidebar-nav">
+                <li class="sidebar-brand"><a id="menu-toggle" href="#">Menu<span id="main_icon" class="glyphicon glyphicon-align-justify"></span></a></li>
+            </ul>
+            <ul class="sidebar-nav" id="sidebar">
+                <li><a>Link1<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
+                <li><a>link2<span class="sub_icon glyphicon glyphicon-link"></span></a></li>
+            </ul>
         </div>
-    </footer>
+        <div id="page-content-wrapper">
+            <div class="page-content inset">
+                <div class="container-fluid" style="padding-top:20px;background-color:#ebebeb" ng-view="/Login">
+                    @RenderBody()
+
+                </div>
+            </div>
+        </div>
+        @*<footer style="position:absolute; z-index:100001; height:60px; bottom:0px; width:100%; background-color:darkgrey; padding-top:10px">*@
+        <footer style="width:100%; background-color:darkgrey; padding-top:10px">
+            <div class="container-fluid">
+                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            </div>
+        </footer>
+    </div>
     @*<link href="~/Content/bootstrap-datetimepicker-build.css" rel="stylesheet" />*@
     @RenderSection("scripts", required: false)
+    <script language="javascript" type="text/javascript">
+        $(document).ready(function () {
+            $("#sidebar-wrapper").mouseover(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("active");
+            });
+
+            $("#sidebar-wrapper").mouseout(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("active");
+            });
+        });
+
+    </script>
 </body>
 </html>

@@ -21,5 +21,7 @@ namespace Dnp.Kanban.Domain
         DnpTask GetTask(int taskId);
 
         Task<int> SaveTask(DnpTask task);
+
+        Task<int> SaveStage(ProjectStage stage);
     }
 }

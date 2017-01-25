@@ -62,7 +62,32 @@
             }, onError);
             
         };
+
+    };
+
+    var stageController = function ($scope, $uibModalInstance, projectId, stageId, stageName, projectService) {
+
+        alert(projectId);
+
+        $scope.projectStageViewModel = new ProjectStage();
+        $scope.projectStageViewModel.ID = stageId;
+        $scope.projectStageViewModel.ProjectID = projectId;
+        $scope.projectStageViewModel.StageName = stageName;
+
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss("cancel");
+        };
+
+        $scope.ok = function () {
+
+            projectService.saveStage($scope.projectStageViewModel).then(function (data) {
+                $uibModalInstance.close(data);
+
+            }, onerror);
+
+        };
     };
 
     app.controller("projectController", projectController);
+    app.controller("stageController", stageController);
 }());

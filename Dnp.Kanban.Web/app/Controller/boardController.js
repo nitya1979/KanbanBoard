@@ -2,7 +2,7 @@
 
     var app = angular.module("kanbanBoard");
 
-    var boardController = function ($scope, $routeParams, projectService, taskService, $uibModal) {
+    var boardController = function ($scope, $routeParams, projectService, taskService, commonDataService, $uibModal) {
 
         projectService.getProject($routeParams.projectId).then(function (data) {
 
@@ -40,11 +40,21 @@
             );
         };
         
+        var getPriorities = function () {
+            commonDataService.getPriorities().then(function (data) {
+                $scope.priorities = data;
+
+            }, function (result) {
+                alert(JSON.stringify(result));
+            });
+        };
+
         var getTasks = function () {
             
             taskService.getTasks($routeParams.projectId)
                        .then(function (data) {
-                           alert(JSON.stringify(data));
+                           $scope.tasks = data;
+                           
                        }, function (result) {
                            alert(JSON.stringify(result));
                        });
@@ -52,7 +62,10 @@
         };
 
         getStages();
+        getPriorities();
         getTasks();
+
+        $scope.refreshTasks = getTasks;
 
         $scope.open = function (size) {
             var modelInstance = $uibModal.open({
@@ -71,15 +84,40 @@
             });
 
             modelInstance.result.then(function (data) {
-                alert(JSON.stringify(data));
+                getTasks();
             }, function () {
-
-                alert("Modal Canceled");
-            })
+                //Do Nothing
+            }).catch(function (err) {
+                alert(JSON.stringify(err));
+            });
         };
 
-        $scope.showDialog = function(){
-            $("#editStageModal").modal();
+        $scope.newStage = function(){
+            var modelInstance = $uibModal.open({
+                animation: true,
+                templateUrl: "/Template/GetAuthTemplate/_stage",
+                controller: "stageController",
+                resolve: {
+                    projectId: function(){
+                        return $routeParams.projectId;
+                    },
+                    stageId: function () {
+                        return 0;
+                    },
+                    stageName: function () {
+                        return "";
+                    }
+                }
+            });
+
+            modelInstance.result.then(function (data) {
+                getStages();
+
+            }, function () {
+                //Do Nothing
+            }).catch(function (err) {
+                alert(JSON.stringify(err));
+            });
         };
     };
 

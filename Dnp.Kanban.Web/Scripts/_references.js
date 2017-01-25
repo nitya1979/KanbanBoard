@@ -8,6 +8,7 @@
 /// <reference path="../app/controller/projectcontroller.js" />
 /// <reference path="../app/controller/registrationcontroller.js" />
 /// <reference path="../app/controller/taskcontroller.js" />
+/// <reference path="../app/directive/dnptaskcard.js" />
 /// <reference path="../app/models.js" />
 /// <reference path="../app/services/accountservice.js" />
 /// <reference path="../app/services/commondataservice.js" />

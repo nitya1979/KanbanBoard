@@ -101,6 +101,20 @@ namespace Dnp.Kanban.SqlRepository
             return dbProject.ID;
         }
 
+        public Task<int> SaveStage(ProjectStage stage)
+        {
+            DbProjectStage dbStage = Mapper.Map<DbProjectStage>(stage);
+
+            if (dbStage.ID == 0)
+            {
+                _kanbanContext.DbProjectStage.Add(dbStage);
+            }
+            else
+                _kanbanContext.Entry<DbProjectStage>(dbStage).State = EntityState.Modified;
+
+            return _kanbanContext.SaveChangesAsync();
+        }
+
         public async Task<int> SaveTask(DnpTask task)
         {
 

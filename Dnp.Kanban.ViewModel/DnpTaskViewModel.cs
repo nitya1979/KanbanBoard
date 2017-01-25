@@ -12,11 +12,11 @@ namespace Dnp.Kanban.ViewModel
         public int TaskID { get; set; }
 
         [Display(Name = "Current Stage", Description ="Current Stage")]
-        public int StageID { get; set; }
+        public int ProjectStageID { get; set; }
 
         [Required(ErrorMessage = "Priority Required")]
         [Display(Description = "Priority", Name = "Priority")]
-        public int Priority { get; set; }
+        public int Priority { get; set; } 
 
         [Required(ErrorMessage ="Short Description is required.")]
         [MaxLength(255)]

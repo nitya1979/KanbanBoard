@@ -259,6 +259,9 @@
   <ItemGroup>
     <Content Include="app\Controller\boardController.js" />
     <Content Include="app\Controller\taskController.js" />
+    <Content Include="app\directive\dnpTaskCard.js" />
+    <Content Include="app\directive\template\priority-updater.html" />
+    <Content Include="app\directive\template\taskInfoCard.html" />
     <Content Include="app\models.js" />
     <Content Include="app\Services\commonDataService.js" />
     <Content Include="app\Services\projectService.js" />
@@ -467,6 +470,8 @@
     <Content Include="Views\Template\_projectDetail.cshtml" />
     <Content Include="Views\Template\_Board.cshtml" />
     <Content Include="Views\Template\_taskDetail.cshtml" />
+    <Content Include="Views\Template\_stage.cshtml" />
+    <None Include="Views\Template\_dnpTaskCard.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

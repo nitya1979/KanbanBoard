@@ -16,7 +16,7 @@
 
     function DnpTask() {
         this.TaskID = 0;
-        this.StageID = 0 ;
+        this.ProjectStageID = 0;
         this.Priority = 0;
         this.ShortDescription = "";
         this.LongDescription = "";

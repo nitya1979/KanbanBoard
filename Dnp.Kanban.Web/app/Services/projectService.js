@@ -33,11 +33,20 @@
             });
         };
 
+        var saveStage = function (projectStage) {
+            alert(JSON.stringify(projectStage));
+            return $http.post("/api/Project/" + projectStage.ProjectID + "/Stage", JSON.stringify(projectStage))
+                        .then(function (response) {
+                            return response.data;
+                        })
+        };
+
         return {
             getProjects: getProjects,
             getProject: getProject,
             saveProject: saveProject,
-            getStages : getStages
+            getStages: getStages,
+            saveStage: saveStage
         };
     };
 

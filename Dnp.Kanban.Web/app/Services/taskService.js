@@ -1,27 +1,43 @@
 ﻿(function () {
     var taskService = function ($http) {
 
-        var getTask = function (taskId) {
-            return $http.get("api/Task/" + taskId)
+        var getTask = function (projectId, taskId) {
+            return $http.get("api/Project/" + projectId + "/Task/" + taskId)
                     .then(function (response) {
-                        return response.data;
+                        var task = response.data;
+                        task.DueDate = new Date(task.DueDate);
+                        return task;
                     });
         };
 
         var getAllTasks = function (projectId) {
-            return $http.get("api/Project/" + projectId + "/Task/1")
+            return $http.get("api/Project/" + projectId + "/Tasks")
                         .then(function (response) {
                             return response.data;
+                           
                         });
         };
 
-        //var saveTask = function (dnpTask) {
-        //    return $http.post("api/Task")
-        //};
+        var saveTask = function (projectId, dnpTask) {
+            if (dnpTask.TaskID == 0){
+                return $http.post("api/Project/" + projectId + "/Task", JSON.stringify(dnpTask))
+                                 .then(function (response) {
+                                     return response;
+                                 });
+            }
+            else {
+
+                return $http.put("api/Project/" + projectId + "/Task/"+dnpTask.TaskID, JSON.stringify(dnpTask))
+                                 .then(function (response) {
+                                     return response;
+                                 });
+            }
+        };
 
         return {
             getTask: getTask,
-            getTasks : getAllTasks
+            getTasks : getAllTasks,
+            saveTask : saveTask
         };
     };
 

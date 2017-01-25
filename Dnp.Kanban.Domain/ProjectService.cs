@@ -57,5 +57,10 @@ namespace Dnp.Kanban.Domain
                 return _projectRepo.GetTask(taskId);
             });
         }
+
+        public Task<int> SaveStage(ProjectStage stage)
+        {
+            return _projectRepo.SaveStage(stage);
+        }
     }
 }

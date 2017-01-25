@@ -31,7 +31,7 @@ namespace Dnp.Kanban.Web.Controllers
 
         // GET: api/Task
         [HttpGet]
-        [Route("{projectId:int}/Tasks/")]
+        [Route("{projectId:int}/Tasks")]
         public async Task<IHttpActionResult> Tasks(int projectId)
         {
             List<DnpTask> dnpTask = await _taskService.GetTasksByProject(projectId);
@@ -52,16 +52,20 @@ namespace Dnp.Kanban.Web.Controllers
         // POST: api/Task
         [HttpPost]
         [Route("{projectId:int}/Task/")]
-        public async Task<int> Post([FromBody]DnpTaskViewModel task, int projectId = 0)
+        public async Task<IHttpActionResult> Post([FromBody]DnpTaskViewModel task, int projectId = 0)
         {
             IEnumerable<ProjectStage> stages = await _projectService.GetProjectStages(projectId);
 
             ProjectStage backLog = stages.ToList()[0];
 
-            task.StageID = backLog.ID;
+            task.ProjectStageID = backLog.ID;
 
-            return await this._taskService.SaveTask(Mapper.Map<DnpTask>(task));
-                
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            int result = await this._taskService.SaveTask(Mapper.Map<DnpTask>(task));
+
+            return DnpOk(result);
         }
 
         // PUT: api/Task/5
@@ -76,7 +80,7 @@ namespace Dnp.Kanban.Web.Controllers
                 ModelState.AddModelError("TaskID", "Invalid Task Id");
             }
 
-            if(!(stages.Any(s => s.ID == task.StageID)))
+            if(!(stages.Any(s => s.ID == task.ProjectStageID)))
             {
                 ModelState.AddModelError("Stage", "Stage doesn't belong to this project.");
             }
@@ -90,8 +94,11 @@ namespace Dnp.Kanban.Web.Controllers
         }
 
         // DELETE: api/Task/5
-        public void Delete(int id)
+        [HttpDelete]
+        [Route("{projectId:int}/Task/{id:int}")]
+        public async Task Delete(int id, int projectId = 0)
         {
+            await _taskService.DeleteTask(id);
         }
     }
 }

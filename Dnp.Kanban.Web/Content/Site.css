@@ -15,3 +15,33 @@ select,
 textarea {
    /* max-width: 280px;*/
 }
+/*.container-fluid{
+    height: 95%;
+}*/
+
+.table{
+    height: calc(100vh - 200px);
+}
+
+.card{
+   margin-right:10px;
+   width:300px
+}
+.card-title{
+  margin-bottom:5px;
+}
+.card-critical{
+  border-left : 5px solid red;
+}
+
+.card-high{
+  border-left : 5px solid orange;
+}
+
+.card-medium{
+  border-left : 5px solid yellow;
+}
+
+.card-low{
+  border-left : 5px solid green;
+}

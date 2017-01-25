@@ -86,5 +86,16 @@ namespace Dnp.Kanban.Web.Controllers
             return DnpOk(projectStageList);
         }
 
+        [HttpPost]
+        [Route("{projectId:int}/Stage")]
+        public async Task<IHttpActionResult> Stage(int projectId, [FromBody]ProjectStageViewModel stage)
+        {
+            if (projectId == 0)
+                return BadRequest("Project ID is not specified.");
+
+            await _projectService.SaveStage(Mapper.Map<ProjectStage>( stage));
+
+            return DnpOk("success");
+        }
     }
 }

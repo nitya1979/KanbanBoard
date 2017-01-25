@@ -38,5 +38,13 @@ namespace Dnp.Kanban.Domain
 
             return await _taskRepository.SaveTask(task);
         }
+
+        public async Task DeleteTask(int taskId)
+        {
+            if (taskId == 0)
+                throw new ArgumentException("Invalid task ID passed.  Value should be greater then 0.");
+
+            await _taskRepository.Delete(taskId);
+        }
     }
 }
