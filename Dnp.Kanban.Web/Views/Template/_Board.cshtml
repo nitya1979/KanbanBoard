@@ -1,27 +1,27 @@
 ﻿@model List<Dnp.Kanban.Domain.ProjectStage>
 <script>
-    var dragId = "";
+    //var dragId = "";
 
-    function allowDrop(ev) {
-        if (ev.target.tagName == "TD") {
-            ev.preventDefault();
-        }
-    }
+    //function allowDrop(ev) {
+    //    if (ev.target.tagName == "TD") {
+    //        ev.preventDefault();
+    //    }
+    //}
 
-    function drag(ev) {
-        dragId = ev.target.id;
-        ev.dataTransfer.setData("text", ev.target.id);
-    }
+    //function drag(ev) {
+    //    dragId = ev.target.id;
+    //    ev.dataTransfer.setData("text", ev.target.id);
+    //}
 
-    function drop(ev) {
-        if (ev.target.id != dragId) {
-            ev.preventDefault();
-            var data = ev.dataTransfer.getData("text");
-            
-            ev.target.appendChild(document.getElementById(data));
-            dragId = "";
-        }
-    }
+    //function drop(ev) {
+    //    if (ev.target.id != dragId) {
+    //        ev.preventDefault();
+    //        var data = ev.dataTransfer.getData("text");
+
+    //        ev.target.appendChild(document.getElementById(data));
+    //        dragId = "";
+    //    }
+    //}
 </script>
 
 <div class="row">
@@ -47,21 +47,9 @@
                 <td ng-repeat="stage in stages" style="background-color:gray; color:whitesmoke"><strong>{{stage.StageName}}</strong></td>
             </tr>
             <tr>
-                <td ng-repeat="stage in stages" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <td ng-repeat="stage in stages" drop drop-callback="doDrop" drop-model="stage">
 
-                    @*<div class="panel panel-primary" style="height:100%">
-                        <div class="panel-heading">
-                            <p class="panel-title">{{stage.StageName}}</p>
-                        </div>
-                        <div class="panel-body" style="height:100%; overflow-y:auto" ondrop="drop(event)" ondragover="allowDrop(event)">*@
-                            @*<div id="drgText"ng-repeat="task in tasks | filter : {ProjectStageID: stage.ID}"
-                                        ondragover="allowDrop(event)" style="border:1px solid silver; border-left:5px solid green" class="col-sm-6"
-                                        draggable="true" ondragstart="drag(event)">
-                                    {{task.ShortDescription}}
-                                </div>*@
-                        <task-info-card id="task{{task.TaskID}}" draggable="true" ondrop="drop(event)" ondragstart="drag(event)" ng-repeat="task in tasks | filter : {ProjectStageID: stage.ID}" task="task" stages="stages" priorities="priorities" on-stage-changed="refreshTasks()"></task-info-card>
-                    @*</div>
-                    </div>*@
+                    <task-info-card id="task{{task.TaskID}}" ng-repeat="task in tasks | filter : {ProjectStageID : stage.ID}:true" drag-model="task" task="task" stages="stages" priorities="priorities" on-stage-changed="refreshTasks()" drag></task-info-card>
                 </td>
 
             </tr>

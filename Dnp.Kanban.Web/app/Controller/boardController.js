@@ -54,7 +54,6 @@
             taskService.getTasks($routeParams.projectId)
                        .then(function (data) {
                            $scope.tasks = data;
-                           
                        }, function (result) {
                            alert(JSON.stringify(result));
                        });
@@ -118,6 +117,14 @@
             }).catch(function (err) {
                 alert(JSON.stringify(err));
             });
+        };
+
+        $scope.doDrop = function (task, newStage) {
+            task.ProjectStageID = newStage.ID;
+            taskService.saveTask(newStage.ProjectID, task)
+                       .then(function (data) {
+                           //ToDo
+                       });
         };
     };
 

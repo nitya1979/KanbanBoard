@@ -44,6 +44,7 @@ namespace Dnp.Kanban.Web
                       "~/app/Services/commonDataService.js",
                       "~/app/Services/taskService.js",
                       "~/app/directive/dnpTaskCard.js",
+                      "~/app/directive/dragDropDirective.js",
                       "~/app/Controller/menuController.js",
                       "~/app/Controller/RegistrationController.js",
                       "~/app/Controller/LoginController.js",

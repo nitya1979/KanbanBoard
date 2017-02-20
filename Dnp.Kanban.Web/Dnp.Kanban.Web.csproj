@@ -260,6 +260,7 @@
     <Content Include="app\Controller\boardController.js" />
     <Content Include="app\Controller\taskController.js" />
     <Content Include="app\directive\dnpTaskCard.js" />
+    <Content Include="app\directive\dragDropDirective.js" />
     <Content Include="app\directive\template\priority-updater.html" />
     <Content Include="app\directive\template\taskInfoCard.html" />
     <Content Include="app\models.js" />
