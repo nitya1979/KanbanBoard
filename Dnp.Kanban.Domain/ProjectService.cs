@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -60,6 +61,11 @@ namespace Dnp.Kanban.Domain
 
         public Task<int> SaveStage(ProjectStage stage)
         {
+            List<ProjectStage> currentStages = _projectRepo.GetProjectStages(stage.ProjectID);
+
+            if (currentStages.Any(s => s.StageName.Equals(stage.StageName)))
+                throw new InvalidOperationException(string.Format("Stage '{0}' already exists", stage.StageName));
+
             return _projectRepo.SaveStage(stage);
         }
     }

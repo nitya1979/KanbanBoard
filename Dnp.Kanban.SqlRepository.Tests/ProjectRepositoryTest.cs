@@ -13,6 +13,7 @@ namespace Dnp.Kanban.SqlRepository.Tests
     public class ProjectRepositoryTest
     {
         IProjectRepository _projRepository;
+        
 
         [TestInitialize]
         public void Setup()

@@ -21,6 +21,9 @@ namespace Dnp.Kanban.SqlRepository
         [MaxLength(150)]
         public string StageName { get; set; }
 
+        [Required]
+        public short Order { get; set; }
+
         public virtual DbProject Project { get; set; }
 
         public ICollection<DbTask> Tasks;

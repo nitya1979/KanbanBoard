@@ -17,6 +17,8 @@ namespace Dnp.Kanban.Domain
         [MaxLength(150)]
         public string StageName { get; set; }
 
+        public short Order { get; set; }
+
         public bool IsCurrent { get; set; }
 
     }
