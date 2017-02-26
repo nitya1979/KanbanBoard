@@ -9,7 +9,7 @@ using Moq;
 
 namespace Dnp.Kanban.Domain.Tests
 {
-    [TestClass()]
+    [Test]
     public class ProjectServiceTests
     {
         Mock<IProjectRepository> mockRepository;
@@ -64,6 +64,21 @@ namespace Dnp.Kanban.Domain.Tests
 
             Assert.IsTrue(newValue > 0, "New Stage save is failed");
 
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void SaveStageWithProjectIdZeroFailTest()
+        {
+            ProjectStage mockStage = new ProjectStage { StageName = "New Stage" };
+
+            mockRepository.Setup(r => r.SaveStage(mockStage)).ReturnsAsync(4);
+
+            ProjectService service = new ProjectService(mockRepository.Object);
+
+            int newValue = service.SaveStage(mockStage).Result;
+
+            AssertThrows
         }
     }
 }

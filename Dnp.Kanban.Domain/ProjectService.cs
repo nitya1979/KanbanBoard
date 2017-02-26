@@ -61,6 +61,8 @@ namespace Dnp.Kanban.Domain
 
         public Task<int> SaveStage(ProjectStage stage)
         {
+            if (stage.ProjectID == 0)
+                throw new InvalidOperationException("Project ID must be defined.");
             
             List<ProjectStage> currentStages = _projectRepo.GetProjectStages(stage.ProjectID);
 

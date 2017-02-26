@@ -21,7 +21,7 @@ namespace Dnp.Kanban.Web.Filters
                 HttpStatusCode.BadRequest, actionExecutedContext.Exception.Message
                 ));
 
-            base.OnException(actionExecutedContext);
+            //base.OnException(actionExecutedContext);
         }
 
         public override Task OnExceptionAsync(HttpActionExecutedContext actionExecutedContext, CancellationToken cancellationToken)
