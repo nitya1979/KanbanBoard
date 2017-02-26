@@ -12,10 +12,20 @@ namespace Dnp.Kanban.Domain.Tests
     [TestClass()]
     public class ProjectServiceTests
     {
+        Mock<IProjectRepository> mockRepository;
+
         [TestInitialize]
         public void Setup()
         {
+            mockRepository = new Mock<IProjectRepository>();
 
+            mockRepository.Setup(r => r.GetProjectStages(1)).Returns(() =>
+            {
+                return new List<ProjectStage> { new ProjectStage {  ID = 1, ProjectID = 1, StageName ="Back Log"},
+                                                new ProjectStage {  ID = 2, ProjectID = 1, StageName ="In Progress"},
+                                                new ProjectStage {  ID = 3, ProjectID = 1, StageName ="Completed"}
+                                                };
+            });
         }
 
         [TestCleanup]
@@ -24,24 +34,16 @@ namespace Dnp.Kanban.Domain.Tests
             
         }
 
-        [TestMethod()]
+        [TestMethod]
         [ExpectedException(typeof( InvalidOperationException))]
         public void SaveStageWithExistingNameFailTest()
         {
-            Mock<IProjectRepository> repositoryMock = new Mock<IProjectRepository>();
-            repositoryMock.Setup(r => r.GetProjectStages(1)).Returns(() =>
-           {
-               return new List<ProjectStage> { new ProjectStage {  ID = 1, ProjectID = 1, StageName ="Back Log"},
-                                                new ProjectStage {  ID = 2, ProjectID = 1, StageName ="In Progress"},
-                                                new ProjectStage {  ID = 3, ProjectID = 1, StageName ="Completed"}
-                                               };
-           });
 
             ProjectStage stageMock = new ProjectStage { ProjectID = 1, StageName = "Back Log" };
 
-            repositoryMock.Setup(r => r.SaveStage(stageMock)).ReturnsAsync(5);
+            mockRepository.Setup(r => r.SaveStage(stageMock)).ReturnsAsync(5);
 
-            ProjectService service = new ProjectService(repositoryMock.Object);
+            ProjectService service = new ProjectService(mockRepository.Object);
 
             service.SaveStage(stageMock);
 
@@ -51,20 +53,12 @@ namespace Dnp.Kanban.Domain.Tests
         [TestMethod]
         public void SaveStageWithNewNameTest()
         {
-            Mock<IProjectRepository> repositoryMock = new Mock<IProjectRepository>();
-            repositoryMock.Setup(r => r.GetProjectStages(1)).Returns(() =>
-            {
-                return new List<ProjectStage> { new ProjectStage {  ID = 1, ProjectID = 1, StageName ="Back Log"},
-                                                new ProjectStage {  ID = 2, ProjectID = 1, StageName ="In Progress"},
-                                                new ProjectStage {  ID = 3, ProjectID = 1, StageName ="Completed"}
-                                               };
-            });
 
             ProjectStage stageMock = new ProjectStage { ProjectID = 1, StageName = "Done" };
 
-            repositoryMock.Setup(r => r.SaveStage(stageMock)).ReturnsAsync(4);
+            mockRepository.Setup(r => r.SaveStage(stageMock)).ReturnsAsync(4);
 
-            ProjectService service = new ProjectService(repositoryMock.Object);
+            ProjectService service = new ProjectService(mockRepository.Object);
 
             int newValue = service.SaveStage(stageMock).Result ;
 
