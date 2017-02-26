@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dnp.Kanban.Web", "Dnp.Kanban.Web\Dnp.Kanban.Web.csproj", "{81C81C4E-1AB5-4CC6-838F-772BA1BB236B}"
 EndProject
@@ -18,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dnp.Common.AngularHtmlHelper", "Dnp.Common.AngularHtmlHelper\Dnp.Common.AngularHtmlHelper.csproj", "{3009A497-C43D-4D8C-9B23-8CE5A5BCCC88}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dnp.Kanban.ViewModel", "Dnp.Kanban.ViewModel\Dnp.Kanban.ViewModel.csproj", "{9AEF652E-7452-408E-A914-AFBC4E86974A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dnp.Kanban.DomainTests", "Dnp.Kanban.DomainTests\Dnp.Kanban.DomainTests.csproj", "{FA47907B-8389-453B-ABD8-C7BE6CE95F9B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{9AEF652E-7452-408E-A914-AFBC4E86974A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AEF652E-7452-408E-A914-AFBC4E86974A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AEF652E-7452-408E-A914-AFBC4E86974A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA47907B-8389-453B-ABD8-C7BE6CE95F9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA47907B-8389-453B-ABD8-C7BE6CE95F9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA47907B-8389-453B-ABD8-C7BE6CE95F9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA47907B-8389-453B-ABD8-C7BE6CE95F9B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

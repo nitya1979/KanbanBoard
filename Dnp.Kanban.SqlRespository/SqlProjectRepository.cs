@@ -23,7 +23,6 @@ namespace Dnp.Kanban.SqlRepository
                 _kanbanContext.Dispose();
         }
 
-
         public Project GetProject(int id)
         {
             var project = _kanbanContext.DbProjects.Find(id);
