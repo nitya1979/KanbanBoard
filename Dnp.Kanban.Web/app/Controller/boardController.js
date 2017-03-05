@@ -24,6 +24,7 @@
                     stages[i].ID = data[i].ID;
                     stages[i].ProjectID = data[i].ProjectID;
                     stages[i].StageName = data[i].StageName;
+                    stages[i].Order = data[i].Order;
                     stages[i].className = "col-sm-" + colValue + " col-md-" + colValue;
                     stages[i].height = { "height": height + "px" };
                 }
@@ -91,7 +92,11 @@
             });
         };
 
-        $scope.newStage = function(){
+        $scope.newStage = function (stage) {
+
+            if (stage == null)
+                stage = new ProjectStage();
+
             var modelInstance = $uibModal.open({
                 animation: true,
                 templateUrl: "/Template/GetAuthTemplate/_stage",
@@ -100,11 +105,11 @@
                     projectId: function(){
                         return $routeParams.projectId;
                     },
-                    stageId: function () {
-                        return 0;
+                    stage: function () {
+                        return stage;
                     },
-                    stageName: function () {
-                        return "";
+                    maxOrder: function () {
+                        return $scope.stages.length;
                     }
                 }
             });

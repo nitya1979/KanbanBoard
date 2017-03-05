@@ -109,7 +109,13 @@ namespace Dnp.Kanban.SqlRepository
                 _kanbanContext.DbProjectStage.Add(dbStage);
             }
             else
-                _kanbanContext.Entry<DbProjectStage>(dbStage).State = EntityState.Modified;
+            {
+                DbProjectStage db = _kanbanContext.DbProjectStage.Single(d => d.ID == dbStage.ID);
+
+                db.StageName = stage.StageName;
+                db.Order = stage.Order;
+            }
+                
 
             return _kanbanContext.SaveChangesAsync();
         }

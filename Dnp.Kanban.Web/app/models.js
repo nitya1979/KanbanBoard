@@ -10,6 +10,7 @@
         this.ID = 0;
         this.ProjectID = 0;
         this.StageName = "";
+        this.Order = 0;
         this.className = "";
         this.height = "";
     }

@@ -66,7 +66,7 @@ namespace Dnp.Kanban.Domain
             
             List<ProjectStage> currentStages = _projectRepo.GetProjectStages(stage.ProjectID);
 
-            if (currentStages.Any(s => s.StageName.Equals(stage.StageName)))
+            if (currentStages.Any(s => s.StageName.Equals(stage.StageName) && stage.ID == 0))
                 throw new InvalidOperationException(string.Format("Stage '{0}' already exists", stage.StageName));
 
             

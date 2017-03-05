@@ -25,7 +25,7 @@ textarea {
 
 .card{
    margin-right:10px;
-   width:300px
+   max-width:300px;
 }
 .card-title{
   margin-bottom:5px;

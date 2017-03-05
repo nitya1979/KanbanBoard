@@ -65,14 +65,21 @@
 
     };
 
-    var stageController = function ($scope, $uibModalInstance, projectId, stageId, stageName, projectService) {
+    var stageController = function ($scope, $uibModalInstance, projectId, stage, maxOrder, projectService) {
 
-        alert(projectId);
+        $scope.projectStageViewModel = stage;
+        
+        var mOrder = 0;
+        if (stage.ID == 0)
+            mOrder = maxOrder + 1;
+        else
+            mOrder = maxOrder;
 
-        $scope.projectStageViewModel = new ProjectStage();
-        $scope.projectStageViewModel.ID = stageId;
-        $scope.projectStageViewModel.ProjectID = projectId;
-        $scope.projectStageViewModel.StageName = stageName;
+        $scope.orderList = new Array(mOrder);
+
+        for (var i = 1; i <= mOrder; i++) {
+            $scope.orderList[i - 1] = i;
+        }
 
         $scope.cancel = function () {
             $uibModalInstance.dismiss("cancel");

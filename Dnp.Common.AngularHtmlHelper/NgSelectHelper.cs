@@ -35,13 +35,21 @@ namespace Dnp.Common.AngularHtmlHelper
             NgHtmlHelper.SetHtmlAttributes(tagBuilder, htmlAttributes);
 
             tagBuilder.MergeAttribute("ng-model", member.ReflectedType.Name.ToCamelCase() + "." + member.Name);
-            if (((PropertyInfo)member).PropertyType.FullName == "System.Int32")
+            if (((PropertyInfo)member).PropertyType.FullName == "System.Int32" ||
+                ((PropertyInfo)member).PropertyType.FullName == "System.Int16")
                 tagBuilder.MergeAttribute("convert-to-number", "true");
 
             TagBuilder optionBuilder = new TagBuilder("option");
             optionBuilder.MergeAttribute("ng-repeat", "opt in " + options);
-            optionBuilder.MergeAttribute("value", "{{opt."+valueField +"}}");
-            optionBuilder.InnerHtml = "{{opt." + textField + "}}";
+            if (string.IsNullOrEmpty(valueField))
+                optionBuilder.MergeAttribute("value", "{{opt}}");
+            else
+                optionBuilder.MergeAttribute("value", "{{opt."+valueField +"}}");
+
+            if( string.IsNullOrEmpty(textField))
+                optionBuilder.InnerHtml = "{{opt}}";
+            else
+                optionBuilder.InnerHtml = "{{opt." + textField + "}}";
 
             tagBuilder.InnerHtml = optionBuilder.ToString();
 

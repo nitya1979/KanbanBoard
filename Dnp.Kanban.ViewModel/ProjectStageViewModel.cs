@@ -17,5 +17,8 @@ namespace Dnp.Kanban.ViewModel
         [MaxLength(150)]
         public string StageName { get; set; }
 
+        [Required(ErrorMessage = "Please select Order of the stage.")]
+        public short Order { get; set; }  
+
     }
 }
