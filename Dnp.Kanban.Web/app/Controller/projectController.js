@@ -68,7 +68,7 @@
     var stageController = function ($scope, $uibModalInstance, projectId, stage, maxOrder, projectService) {
 
         $scope.projectStageViewModel = stage;
-        
+        $scope.projectStageViewModel.ProjectID = projectId;
         var mOrder = 0;
         if (stage.ID == 0)
             mOrder = maxOrder + 1;

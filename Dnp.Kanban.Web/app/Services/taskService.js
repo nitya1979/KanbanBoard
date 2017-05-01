@@ -34,10 +34,18 @@
             }
         };
 
+        var getChartData = function (id) {
+
+            return $http.get("/api/Project/" + id + "/ChartData").then(function (response) {
+                return response.data;
+            });
+        }
+
         return {
             getTask: getTask,
             getTasks : getAllTasks,
-            saveTask : saveTask
+            saveTask: saveTask,
+            getChartData: getChartData
         };
     };
 

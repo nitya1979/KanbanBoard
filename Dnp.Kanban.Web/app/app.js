@@ -1,5 +1,5 @@
 ﻿(function () {
-    var app = angular.module("kanbanBoard", ["ngRoute", "LocalStorageModule", "ngCookies", "ui.bootstrap"]);
+    var app = angular.module("kanbanBoard", ["ngRoute", "LocalStorageModule", "ngCookies", "ui.bootstrap","chart.js"]);
 
     app.config(function ($routeProvider) {
         $routeProvider.when("/Dashboard", {

@@ -4,7 +4,7 @@
         
         var getProjects = function () {
 
-            return $http.get("/api/Project").then(function (response) {
+            return $http.get("/api/Project/Recent/4").then(function (response) {
                 return response.data;
             });
         };
@@ -40,6 +40,8 @@
                             return response.data;
                         })
         };
+
+
 
         return {
             getProjects: getProjects,

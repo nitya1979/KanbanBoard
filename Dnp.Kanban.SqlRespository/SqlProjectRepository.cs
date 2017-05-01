@@ -30,9 +30,17 @@ namespace Dnp.Kanban.SqlRepository
             return p;
         }
 
-        public List<Project> GetProjectList()
+        public List<Project> GetProjectList(int? page, int? count)
         {
-            List<DbProject> dbProjs = _kanbanContext.DbProjects.ToList();
+            List<DbProject> dbProjs;
+
+            if (page == null && count == null)
+                dbProjs = _kanbanContext.DbProjects.OrderByDescending(p => p.StartDate).ToList();
+            else
+                dbProjs = _kanbanContext.DbProjects.OrderByDescending(p => p.StartDate)
+                                                               .Skip(page.Value * count.Value)
+                                                               .Take(count.Value)
+                                                               .ToList();
 
             List<Project> projectList = new List<Project>();
 
@@ -56,6 +64,55 @@ namespace Dnp.Kanban.SqlRepository
             }
 
             return stage;
+        }
+
+        public List<ProjectSummary> GetProjectSummary(int? page, int? count)
+        {
+            List<DbProject> dbProjs;
+
+            if (page == null && count == null)
+                dbProjs = _kanbanContext.DbProjects.OrderByDescending(p => p.StartDate).Include( p => p.Stages).ToList();
+            else
+                dbProjs = _kanbanContext.DbProjects.OrderByDescending(p => p.StartDate)
+                                                               .Skip(page.Value * count.Value)
+                                                               .Take(count.Value).Include( p => p.Stages)
+                                                               .ToList();
+
+            List<ProjectSummary> summary = new List<ProjectSummary>();
+
+            foreach (DbProject proj in dbProjs)
+            {
+            
+                ProjectSummary summ = new ProjectSummary
+                {
+                    ProjectID = proj.ID,
+                    Name = proj.Name,
+                    Description = proj.Description,
+                    StartDate = proj.StartDate,
+                    EndDate = proj.EndDate,
+                };
+
+                summary.Add(summ);
+
+                var backlog = proj.Stages.OrderBy(s => s.Order).FirstOrDefault();
+                var completed = proj.Stages.OrderByDescending(s => s.Order).FirstOrDefault();
+
+
+                var tasks = _kanbanContext.DbProjectStage.Join(_kanbanContext.DbTask, p => p, t => t.ProjectStage, (p, t) => new { p, t })
+                                    .Where(o => o.p.ProjectID == proj.ID)
+                                    .Select(j => new { taskId = j.t.TaskID, stageId = j.t.ProjectStageID }).ToList();
+
+                int bakLogCnt = tasks.Where(t => t.stageId == backlog.ID).Count();
+                int completdCnt = tasks.Where(t => t.stageId == completed.ID).Count();
+
+                int inProgressCnt = tasks.Where(t => t.stageId != backlog.ID && t.stageId != completed.ID).Count();
+
+                summ.ChartLabel = new string[] { "Back Log", "In Progress", "Completed" };
+                summ.ChartData = new int[] { bakLogCnt, inProgressCnt, completdCnt };
+
+            }
+
+            return summary;
         }
 
         public async Task<List<DnpTask>> GetProjectTask(int projectId)
@@ -106,11 +163,19 @@ namespace Dnp.Kanban.SqlRepository
 
             if (dbStage.ID == 0)
             {
+                dbStage.Order = (short)(_kanbanContext.DbProjectStage.Max( s => s.Order));
                 _kanbanContext.DbProjectStage.Add(dbStage);
+                
             }
             else
             {
+                foreach (var dbStg in _kanbanContext.DbProjectStage.Where( s => s.Order >= stage.Order))
+                {
+                    dbStg.Order++;
+                }
+
                 DbProjectStage db = _kanbanContext.DbProjectStage.Single(d => d.ID == dbStage.ID);
+
 
                 db.StageName = stage.StageName;
                 db.Order = stage.Order;

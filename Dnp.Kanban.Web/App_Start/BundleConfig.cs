@@ -35,6 +35,8 @@ namespace Dnp.Kanban.Web
                       "~/Scripts/angular-cookies.min.js",
                       "~/Scripts/angular-ui/ui-bootstrap.min.js",
                       "~/Scripts/angular-ui/ui-bootstrap-tpls.min.js",
+                      "~/Scripts/Chart.min.js",
+                      "~/Scripts/angular-chart.js/angular-chart.min.js",
                       "~/app/app.js",
                       "~/app/models.js",
                       "~/app/sessionInjector.js",

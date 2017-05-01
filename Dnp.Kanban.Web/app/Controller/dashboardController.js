@@ -1,9 +1,10 @@
 ﻿(function () {
     var app = angular.module("kanbanBoard");
 
-    var dashboardController = function ($scope, projectService) {
+    var dashboardController = function ($scope, projectService, taskService) {
 
         var onSuccess = function (data) {
+            
             $scope.projects = data;
         };
 

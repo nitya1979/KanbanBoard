@@ -100,5 +100,30 @@ namespace Dnp.Kanban.Web.Controllers
         {
             await _taskService.DeleteTask(id);
         }
+
+        [HttpGet]
+        [Route("{projectId:int}/ChartData")]
+        public async Task<IHttpActionResult> ChartData(int projectId)
+        {
+
+            var taskList = await _taskService.GetTasksByProject(projectId);
+            var stageList = await _projectService.GetProjectStages(projectId);
+
+            var lastStage = stageList.OrderByDescending(s => s.Order).FirstOrDefault();
+            var firstStage = stageList.OrderBy(s => s.Order).FirstOrDefault();
+
+            int baclog = taskList.Where(t => t.ProjectStageID == firstStage.ID).Count();
+            int completed = taskList.Where(t => t.ProjectStageID == lastStage.ID).Count();
+
+            int inprogress = taskList.Where(t => t.ProjectStageID != firstStage.ID && t.ProjectStageID != lastStage.ID).Count();
+
+            var chartData = new
+            {
+                Label = new string[] { "Back Log", "In Progress", "Completed" },
+                Data = new int[] { baclog, inprogress, completed }
+            };
+
+            return DnpOk(chartData);
+        }
     }
 }

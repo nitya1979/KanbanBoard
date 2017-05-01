@@ -20,7 +20,20 @@ namespace Dnp.Kanban.Domain
 
         public Task<IEnumerable<Project>> GetAllProjects()
         {
-            return Task.Factory.StartNew<IEnumerable<Project>>(() => { return _projectRepo.GetProjectList(); }) ;
+            return Task.Factory.StartNew<IEnumerable<Project>>(() => { return _projectRepo.GetProjectList(null, null); }) ;
+        }
+
+        public Task<IEnumerable<Project>> GetProjects(int page,int count)
+        {
+            return Task.Factory.StartNew<IEnumerable<Project>>(() => { return _projectRepo.GetProjectList(page, count); });
+        }
+
+        public Task<IEnumerable<ProjectSummary>> GetProjectSummary(int page, int count)
+        {
+            return Task.Factory.StartNew<IEnumerable<ProjectSummary>>(() =>
+            {
+                return _projectRepo.GetProjectSummary(page, count);
+            });
         }
 
         public Task<Project> GetProject(int id)

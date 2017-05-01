@@ -31,6 +31,17 @@ namespace Dnp.Kanban.Web.Controllers
 
         }
 
+        [HttpGet]
+        [Route("Recent/{count:int}")]
+        public async Task<IHttpActionResult> Recent(int count)
+        {
+            var projectList = await _projectService.GetProjectSummary(0, count);
+
+            return DnpOk(projectList);
+        }
+
+ 
+
         // GET: api/Project/5
         public async Task<IHttpActionResult> Get(int id)
         {
