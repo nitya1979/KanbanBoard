@@ -54,6 +54,20 @@ namespace Dnp.Kanban.SqlRepository
             });
         }
 
+        public Task<List<DnpTask>> GetTaskByUser(string userId, DateTime fromDate, DateTime toDate, bool isCompleted = false)
+        {
+            return Task.Factory.StartNew < List<DnpTask>>(() =>
+            {
+                List<DnpTask> tasks = new List<DnpTask>();
+
+                List<DbTask> task = _dbContext.DbTask.Where(t => t.UserID == userId && t.DueDate.Value >= fromDate && 
+                                                                 t.DueDate.Value <= toDate && t.IsCompleted == isCompleted)
+                                                     .ToList();
+
+                return tasks;
+            });
+        }
+
         public async Task<int> SaveTask(DnpTask task)
         {
             DbTask dbTask = Mapper.Map<DbTask>(task);

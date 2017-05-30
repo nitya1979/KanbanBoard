@@ -1,21 +1,36 @@
 ﻿
-<div class="row">
-    <div class="col-md-3" ng-repeat="proj in projects">
+<div class="row hidden-xs">
+    <div class="col-md-3 col-sm-6" ng-repeat="proj in projects">
         <div class="panel">
-            <div class="panel-heading">
-                <p class="panel-title"><a href="#/Project/{{proj.ID}}">{{proj.Name}}</a></p>
-            </div>
+
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <canvas id="doughnut" class="chart chart-doughnut"
                                 chart-data="proj.ChartData" chart-labels="proj.ChartLabel" chart-colors="colors"></canvas>
                     </div>
+                    <div class="col-md-6">
+                        Start Date : {{proj.StartDate}}
+                    </div>
                 </div>
-                <div>
-                    Start Date : {{proj.StartDate}}
-                </div>
+
+            </div>
+            <div class="panel-heading">
+                <p class="panel-title"><a href="#/Project/{{proj.ID}}">{{proj.Name}}</a></p>
             </div>
         </div>
     </div> 
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel">
+            <div class="panel-heading">
+                <p class="panel-title">My Task</p>
+            </div>
+            <div class="panel-body">
+                
+
+            </div>
+        </div>
+    </div>
 </div>

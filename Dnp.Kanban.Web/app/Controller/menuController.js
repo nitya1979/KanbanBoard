@@ -12,7 +12,7 @@
         
         $scope.setSelectedProject = function (projectId) {
             for (var i = 0; i < $scope.projectList.length; i++) {
-                if( $scope.projectList[i].ID == projectId){
+                if ($scope.projectList[i].ProjectID == projectId) {
                     $scope.selectedProject = $scope.projectList[i];
                     break;
                 }

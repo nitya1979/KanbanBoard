@@ -24,6 +24,10 @@ namespace Dnp.Kanban.SqlRepository
         public string Description { get; set; }
 
         [Required]
+        [MaxLength(256)]
+        public string UserID { get; set; }
+
+        [Required]
         public DateTime StartDate { get; set; }
 
         [Required]

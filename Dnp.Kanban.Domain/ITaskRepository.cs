@@ -10,6 +10,7 @@ namespace Dnp.Kanban.Domain
     {
         Task<List<DnpTask>> GetTaskByProject(int projectId);
         Task<DnpTask> GetTask(int taskId);
+        Task<List<DnpTask>> GetTaskByUser(string userId, DateTime fromDate, DateTime toDate, bool isCompleted = false);
         Task<int> SaveTask(DnpTask task);
         Task Delete(int taskId);
     }

@@ -8,11 +8,11 @@ namespace Dnp.Kanban.Domain
 {
     public interface IProjectRepository
     {
-        List<Project> GetProjectList(int? page, int? count );
+        List<Project> GetProjectList(string userId,int? page, int? count );
 
-        List<ProjectSummary> GetProjectSummary(int? page, int? count);
+        List<ProjectSummary> GetProjectSummary(string userId, int? page, int? count);
 
-        List<ProjectStage> GetProjectStages(int projectId);
+        List<ProjectStage> GetProjectStages( int projectId);
 
         Project GetProject(int id);
 

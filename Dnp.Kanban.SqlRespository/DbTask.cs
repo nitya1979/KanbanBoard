@@ -28,8 +28,15 @@ namespace Dnp.Kanban.SqlRepository
 
         public DateTime? DueDate { get; set; }
 
+        [Required]
+        [MaxLength(256)]
+        public string UserID { get; set; }
+
+        public bool IsCompleted { get; set; }
+
         [ForeignKey("ProjectStageID")]
         public DbProjectStage ProjectStage { get; set; }
+
 
     }
 }

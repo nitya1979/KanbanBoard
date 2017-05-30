@@ -4,8 +4,6 @@ using Dnp.Kanban.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -49,6 +47,7 @@ namespace Dnp.Kanban.Web.Controllers
             return DnpOk(Mapper.Map<DnpTaskViewModel>(task));
         }
 
+
         // POST: api/Task
         [HttpPost]
         [Route("{projectId:int}/Task/")]
@@ -59,11 +58,13 @@ namespace Dnp.Kanban.Web.Controllers
             ProjectStage backLog = stages.ToList()[0];
 
             task.ProjectStageID = backLog.ID;
-
+            
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            int result = await this._taskService.SaveTask(Mapper.Map<DnpTask>(task));
+            DnpTask dntpTask = Mapper.Map<DnpTask>(task);
+            dntpTask.UserID = User.Identity.Name;
+            int result = await this._taskService.SaveTask(dntpTask);
 
             return DnpOk(result);
         }
@@ -84,6 +85,13 @@ namespace Dnp.Kanban.Web.Controllers
             {
                 ModelState.AddModelError("Stage", "Stage doesn't belong to this project.");
             }
+
+            DnpTask dnpTask = Mapper.Map<DnpTask>(task);
+
+            //if task is at last stage, mark it complete
+            ProjectStage lastStage =  stages.OrderByDescending(s => s.Order).FirstOrDefault();
+            
+            dnpTask.IsCompleted = task.ProjectStageID == lastStage.ID;
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -125,5 +133,7 @@ namespace Dnp.Kanban.Web.Controllers
 
             return DnpOk(chartData);
         }
+
+        
     }
 }

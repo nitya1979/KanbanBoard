@@ -20,5 +20,9 @@ namespace Dnp.Kanban.Domain
 
         public Priority Priority { get; set; }
 
+        public bool IsCompleted { get; set; }
+
+        public string UserID { get; set; }
+
     }
 }

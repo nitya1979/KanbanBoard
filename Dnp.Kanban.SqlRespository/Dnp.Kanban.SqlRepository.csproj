@@ -91,6 +91,14 @@
     <Compile Include="Migrations\201702202324029_Add_Order_in_Stage.Designer.cs">
       <DependentUpon>201702202324029_Add_Order_in_Stage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705261144336_adduserid.cs" />
+    <Compile Include="Migrations\201705261144336_adduserid.Designer.cs">
+      <DependentUpon>201705261144336_adduserid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705300015274_AddCompletedFlag.cs" />
+    <Compile Include="Migrations\201705300015274_AddCompletedFlag.Designer.cs">
+      <DependentUpon>201705300015274_AddCompletedFlag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="SqlCommonDataRepository.cs" />
     <Compile Include="SqlProjectRepository.cs" />
@@ -131,6 +139,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201702202324029_Add_Order_in_Stage.resx">
       <DependentUpon>201702202324029_Add_Order_in_Stage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705261144336_adduserid.resx">
+      <DependentUpon>201705261144336_adduserid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705300015274_AddCompletedFlag.resx">
+      <DependentUpon>201705300015274_AddCompletedFlag.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

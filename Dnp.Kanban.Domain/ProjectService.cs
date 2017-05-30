@@ -18,21 +18,21 @@ namespace Dnp.Kanban.Domain
             this._projectRepo = projectReop;
         }
 
-        public Task<IEnumerable<Project>> GetAllProjects()
+        public Task<IEnumerable<Project>> GetAllProjects(string userId)
         {
-            return Task.Factory.StartNew<IEnumerable<Project>>(() => { return _projectRepo.GetProjectList(null, null); }) ;
+            return Task.Factory.StartNew<IEnumerable<Project>>(() => { return _projectRepo.GetProjectList(userId, null, null); }) ;
         }
 
-        public Task<IEnumerable<Project>> GetProjects(int page,int count)
+        public Task<IEnumerable<Project>> GetProjects(string userId, int page,int count)
         {
-            return Task.Factory.StartNew<IEnumerable<Project>>(() => { return _projectRepo.GetProjectList(page, count); });
+            return Task.Factory.StartNew<IEnumerable<Project>>(() => { return _projectRepo.GetProjectList(userId, page, count); });
         }
 
-        public Task<IEnumerable<ProjectSummary>> GetProjectSummary(int page, int count)
+        public Task<IEnumerable<ProjectSummary>> GetProjectSummary(string userId, int page, int count)
         {
             return Task.Factory.StartNew<IEnumerable<ProjectSummary>>(() =>
             {
-                return _projectRepo.GetProjectSummary(page, count);
+                return _projectRepo.GetProjectSummary(userId, page, count);
             });
         }
 

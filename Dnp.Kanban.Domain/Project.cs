@@ -22,5 +22,7 @@ namespace Dnp.Kanban.Domain
         [DataType(DataType.Date, ErrorMessage = "Invalid end date.")]
         [Required(ErrorMessage = "Please enter end date.")]
         public DateTime EndDate { get; set; }
+
+        public string UserID { get; set; }
     }
 }

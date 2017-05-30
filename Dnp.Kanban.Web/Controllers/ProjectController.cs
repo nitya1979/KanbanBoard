@@ -24,8 +24,8 @@ namespace Dnp.Kanban.Web.Controllers
         // GET: api/Project
         public async Task< IHttpActionResult> Get()
         {
-
-            var projectList = await _projectService.GetAllProjects();
+            
+            var projectList = await _projectService.GetAllProjects(this.User.Identity.Name);
             
             return DnpOk(projectList);
 
@@ -35,7 +35,7 @@ namespace Dnp.Kanban.Web.Controllers
         [Route("Recent/{count:int}")]
         public async Task<IHttpActionResult> Recent(int count)
         {
-            var projectList = await _projectService.GetProjectSummary(0, count);
+            var projectList = await _projectService.GetProjectSummary(this.User.Identity.Name, 0, count);
 
             return DnpOk(projectList);
         }
@@ -53,6 +53,10 @@ namespace Dnp.Kanban.Web.Controllers
             if (project == null)
                 return NotFound();
 
+            //TODO: to move this code in authorize attribute
+            if (project.UserID != User.Identity.Name)
+                return Unauthorized();
+
             return DnpOk(Mapper.Map<ProjectViewModel>( project));
         }
 
@@ -61,6 +65,7 @@ namespace Dnp.Kanban.Web.Controllers
         {
             if (ModelState.IsValid)
             {
+                project.UserID = User.Identity.Name;
                 int i = await _projectService.SaveProjectAsync(project);
                 
                 return Ok();
@@ -88,6 +93,11 @@ namespace Dnp.Kanban.Web.Controllers
         {
             if (projectId == 0)
                 return BadRequest("Product id not specified.");
+            var project = await _projectService.GetProject(projectId);
+
+            //TODO: to move in attributes
+            if (project.UserID != User.Identity.Name)
+                return Unauthorized();
 
             var projectStageList = await _projectService.GetProjectStages(projectId);
 
