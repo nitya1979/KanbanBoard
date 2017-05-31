@@ -46,5 +46,15 @@ namespace Dnp.Kanban.Domain
 
             await _taskRepository.Delete(taskId);
         }
+
+        public async Task<List<DnpTask>> GetDueTasks(string userId, DateTime from, DateTime toDate)
+        {
+
+            if (string.IsNullOrEmpty(userId))
+                throw new ArgumentNullException("User Id cancnot be null.");
+
+            return await _taskRepository.GetTaskByUser(userId, from, toDate, false);
+        
+        }
     }
 }

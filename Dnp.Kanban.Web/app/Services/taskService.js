@@ -41,11 +41,18 @@
             });
         }
 
+        var getDueTasks = function () {
+
+            return $http.get("/api/user/DueTasks").then(function (response) {
+                return response.data;
+            });
+        };
         return {
             getTask: getTask,
             getTasks : getAllTasks,
             saveTask: saveTask,
-            getChartData: getChartData
+            getChartData: getChartData,
+            getDueTasks : getDueTasks
         };
     };
 

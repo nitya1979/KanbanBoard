@@ -13,6 +13,13 @@
         };
 
         projectService.getProjects().then(onSuccess, onError);
+
+        taskService.getDueTasks().then(function (data) {
+            $scope.dueTasks = data;
+        }, function (result) {
+            alert(result.data.Message);
+        }
+        );
     };
 
     app.controller("dashboardController", dashboardController);

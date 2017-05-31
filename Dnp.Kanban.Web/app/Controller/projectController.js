@@ -2,7 +2,8 @@
     var app = angular.module("kanbanBoard");
 
     var projectController = function ($scope, $location, $routeParams, projectService) {
-        
+        alert("in project controller");
+
         var onError = function(result){
             alert(JSON.stringify(result));
         };

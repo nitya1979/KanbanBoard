@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Dnp.Kanban.Domain;
 using Dnp.Kanban.ViewModel;
+using Dnp.Kanban.Web.Helper;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -57,7 +58,9 @@ namespace Dnp.Kanban.Web.Controllers
             if (project.UserID != User.Identity.Name)
                 return Unauthorized();
 
-            return DnpOk(Mapper.Map<ProjectViewModel>( project));
+            var mpper = WebHelper.GetMapper< Project, ProjectViewModel>();
+
+            return DnpOk(mpper.Map<ProjectViewModel>( project));
         }
 
         // POST: api/Project
@@ -114,7 +117,9 @@ namespace Dnp.Kanban.Web.Controllers
             if (projectId == 0)
                 return BadRequest("Project ID is not specified.");
 
-            await _projectService.SaveStage(Mapper.Map<ProjectStage>( stage));
+            var mapper = WebHelper.GetMapper<ProjectStageViewModel, ProjectStage>();
+
+            await _projectService.SaveStage(mapper.Map<ProjectStage>( stage));
 
             return DnpOk("success");
         }

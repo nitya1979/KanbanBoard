@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Dnp.Kanban.Domain;
 using Dnp.Kanban.ViewModel;
+using Dnp.Kanban.Web.Helper;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,8 +34,8 @@ namespace Dnp.Kanban.Web.Controllers
         public async Task<IHttpActionResult> Tasks(int projectId)
         {
             List<DnpTask> dnpTask = await _taskService.GetTasksByProject(projectId);
-
-            return DnpOk(Mapper.Map<List<DnpTask>, List<DnpTaskViewModel>>(dnpTask));
+            var mapper = WebHelper.GetMapper<DnpTask, DnpTaskViewModel>();
+            return DnpOk(mapper.Map<List<DnpTask>, List<DnpTaskViewModel>>(dnpTask));
         }
 
         // GET: api/Task/5
@@ -44,7 +45,9 @@ namespace Dnp.Kanban.Web.Controllers
         {
             DnpTask task = await _taskService.GetTask(id);
 
-            return DnpOk(Mapper.Map<DnpTaskViewModel>(task));
+            var mapper = WebHelper.GetMapper<DnpTask, DnpTaskViewModel>();
+
+            return DnpOk(mapper.Map<DnpTaskViewModel>(task));
         }
 
 
@@ -62,9 +65,11 @@ namespace Dnp.Kanban.Web.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            DnpTask dntpTask = Mapper.Map<DnpTask>(task);
-            dntpTask.UserID = User.Identity.Name;
-            int result = await this._taskService.SaveTask(dntpTask);
+            var mapper = WebHelper.GetMapper<DnpTaskViewModel, DnpTask>();
+            DnpTask dnpTask = mapper.Map<DnpTask>(task);
+
+            dnpTask.UserID = User.Identity.Name;
+            int result = await this._taskService.SaveTask(dnpTask);
 
             return DnpOk(result);
         }
@@ -86,17 +91,19 @@ namespace Dnp.Kanban.Web.Controllers
                 ModelState.AddModelError("Stage", "Stage doesn't belong to this project.");
             }
 
-            DnpTask dnpTask = Mapper.Map<DnpTask>(task);
+            var mapper = WebHelper.GetMapper<DnpTaskViewModel, DnpTask>();
+            DnpTask dnpTask = mapper.Map<DnpTask>(task);
 
             //if task is at last stage, mark it complete
             ProjectStage lastStage =  stages.OrderByDescending(s => s.Order).FirstOrDefault();
             
             dnpTask.IsCompleted = task.ProjectStageID == lastStage.ID;
+            dnpTask.UserID = User.Identity.Name;
 
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            int result = await this._taskService.SaveTask(Mapper.Map<DnpTask>( task));
+            int result = await this._taskService.SaveTask(dnpTask);
 
             return DnpOk(result);
         }
@@ -134,6 +141,5 @@ namespace Dnp.Kanban.Web.Controllers
             return DnpOk(chartData);
         }
 
-        
     }
 }

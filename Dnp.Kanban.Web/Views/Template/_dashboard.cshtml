@@ -16,7 +16,7 @@
 
             </div>
             <div class="panel-heading">
-                <p class="panel-title"><a href="#/Project/{{proj.ID}}">{{proj.Name}}</a></p>
+                <p class="panel-title"><a href="#/Project/{{proj.ProjectID}}">{{proj.Name}}</a></p>
             </div>
         </div>
     </div> 
@@ -28,8 +28,11 @@
                 <p class="panel-title">My Task</p>
             </div>
             <div class="panel-body">
-                
-
+                <table class="table table-hover">
+                    <tr ng-repeat="task in dueTasks">
+                        <td>{{task.ShortDescription}}</td>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>

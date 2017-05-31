@@ -52,6 +52,8 @@
         $scope.cancel = function () {
             $uibModalInstance.dismiss("cancel");
         };
+
+       
     };
 
     app.controller("taskController", taskController);

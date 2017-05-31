@@ -64,7 +64,8 @@ namespace Dnp.Kanban.SqlRepository
                                                                  t.DueDate.Value <= toDate && t.IsCompleted == isCompleted)
                                                      .ToList();
 
-                return tasks;
+                return task.Select(t => Mapper.Map<DbTask, DnpTask>(t)).ToList();
+                //return tasks;
             });
         }
 

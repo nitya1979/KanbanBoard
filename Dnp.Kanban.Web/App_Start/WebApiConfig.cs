@@ -33,6 +33,7 @@ namespace Dnp.Kanban.Web
             _unityContainer.RegisterType<IHttpController, ProjectController>();
             _unityContainer.RegisterType<IHttpController, CommonController>();
             _unityContainer.RegisterType<IHttpController, TaskController>();
+            _unityContainer.RegisterType<IHttpController, DashboardController>();
 
             config.DependencyResolver = new UnityResolover(_unityContainer);
 

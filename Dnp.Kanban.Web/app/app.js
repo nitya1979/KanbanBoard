@@ -1,6 +1,10 @@
 ﻿(function () {
     var app = angular.module("kanbanBoard", ["ngRoute", "LocalStorageModule", "ngCookies", "ui.bootstrap","chart.js"]);
 
+    app.config(['$locationProvider', function ($locationProvider) {
+        $locationProvider.hashPrefix('');
+    }]);
+
     app.config(function ($routeProvider) {
         $routeProvider.when("/Dashboard", {
             templateUrl: "/Template/GetAuthTemplate/_dashboard",
