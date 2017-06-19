@@ -33,13 +33,13 @@
   Chart.defaults.global.tooltips.mode = 'label';
   Chart.defaults.global.elements.line.borderWidth = 2;
   Chart.defaults.global.elements.rectangle.borderWidth = 2;
-  Chart.defaults.global.legend.display = false;
+  Chart.defaults.global.legend.display = true;
   Chart.defaults.global.colors = [
+    '#F7464A', // red
+    '#FDB45C', // yellow
+    '#46BFBD', // green
     '#97BBCD', // blue
     '#DCDCDC', // light grey
-    '#F7464A', // red
-    '#46BFBD', // green
-    '#FDB45C', // yellow
     '#949FB1', // grey
     '#4D5360'  // dark grey
   ];

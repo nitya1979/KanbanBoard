@@ -44,6 +44,11 @@
         var getDueTasks = function () {
 
             return $http.get("/api/user/DueTasks").then(function (response) {
+                var data = response.data;
+
+                for (var i = 0; i < data.length ; i++) {
+                    data[i].DueDate = Date.parse(data[i].DueDate);
+                }
                 return response.data;
             });
         };

@@ -11,7 +11,7 @@ namespace Dnp.Kanban.Domain
         public static DateTime GetWeekendDate(DateTime date)
         {
             
-            int daysToWeekend = 5 - (int)date.DayOfWeek;
+            int daysToWeekend = 7 - (int)date.DayOfWeek;
 
             return date.AddDays(daysToWeekend);
         }

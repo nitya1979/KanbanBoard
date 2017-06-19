@@ -1,7 +1,7 @@
 ﻿
 <div class="row hidden-xs">
-    <div class="col-md-3 col-sm-6" ng-repeat="proj in projects">
-        <div class="panel">
+    <div class="col-md-3 col-sm-3" ng-repeat="proj in projects">
+        <div class="panel panel-default">
 
             <div class="panel-body">
                 <div class="row">
@@ -10,30 +10,69 @@
                                 chart-data="proj.ChartData" chart-labels="proj.ChartLabel" chart-colors="colors"></canvas>
                     </div>
                     <div class="col-md-6">
-                        Start Date : {{proj.StartDate}}
+                        <strong>Start Date :</strong> {{proj.StartDate}}<br />
+                        <strong>Finish Date :</strong> {{proj.EndDate}}
                     </div>
                 </div>
 
             </div>
             <div class="panel-heading">
-                <p class="panel-title"><a href="#/Project/{{proj.ProjectID}}">{{proj.Name}}</a></p>
-            </div>
-        </div>
-    </div> 
-</div>
-<div class="row">
-    <div class="col-md-6">
-        <div class="panel">
-            <div class="panel-heading">
-                <p class="panel-title">My Task</p>
-            </div>
-            <div class="panel-body">
-                <table class="table table-hover">
-                    <tr ng-repeat="task in dueTasks">
-                        <td>{{task.ShortDescription}}</td>
-                    </tr>
-                </table>
+                <p class="panel-title">
+                    <a href="#/Board/{{proj.ProjectID}}">{{proj.Name}}</a>
+                    <a class="btn-link pull-right" href="#/Project/{{proj.ProjectID}}" style="cursor:pointer" title="Edit"> <span class="glyphicon glyphicon-cog"></span></a>
+                </p>
             </div>
         </div>
     </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <p class="panel-title">My Tasks</p>
+            </div>
+            <table class="table table-responsive table-bordered" cellpadding="0" cellspacing="0">
+                <tr class="bg-primary">
+                    <th>Task</th>
+                    <th>Project</th>
+                    <th>Due Date</th>
+                </tr>
+                <tr class="danger text-danger" ng-repeat="task in dueTasks | filter: filterOverDue | orderBy : 'DueDate'">
+                    <td><a class="text-danger" href="#/Board/{{task.ProjectID}}/{{task.TaskID}}"> {{task.ShortDescription}}</a> </td>
+                    <td><a class="text-danger" href="#/Board/{{task.ProjectID}}"> {{task.ProjectName}}</a></td>
+                    <td>{{task.DueDate | date : 'dd/MM/yyyy'}}</td>
+                </tr>
+                <tr class="info text-info" ng-repeat="task in dueTasks | filter: filterToday | orderBy : 'DueDate'">
+                    <td><a class="text-info" href="#/Board/{{task.ProjectID}}/{{task.TaskID}}">{{task.ShortDescription}}</a> </td>
+                    <td><a class="text-info" href="#/Board/{{task.ProjectID}}"> {{task.ProjectName}}</a></td>
+                    <td>{{task.DueDate | date : 'dd/MM/yyyy' }}</td>
+                </tr>
+                <tr ng-repeat="task in dueTasks | filter: filterThisWeek | orderBy : 'DueDate'">
+                    <td><a href="#/Board/{{task.ProjectID}}/{{task.TaskID}}">{{task.ShortDescription}}</a> </td>
+                    <td><a href="#/Board/{{task.ProjectID}}"> {{task.ProjectName}}</a></td>
+                    <td>{{task.DueDate | date : 'dd/MM/yyyy'}}</td>
+                </tr>
+            </table>
+            <div class="panel-body">
+                    <p class="text-right">
+                        <a class="btn btn-primary btn-sm" href="#/Projects/">View All</a>
+                    </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <p class="panel-title">Notes</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <p class="panel-title">Notes</p>
+            </div>
+        </div>
+    </div>
+
 </div>

@@ -2,7 +2,6 @@
     var app = angular.module("kanbanBoard");
 
     var taskController = function ($scope, $uibModalInstance, commonDataService, taskId, stages, taskService) {
-
         $scope.Stages = stages;
 
         var onError = function (result) {
@@ -14,8 +13,9 @@
             $scope.dnpTaskViewModel.StageID = stages[0].ID;
         }
         else {
+            
             taskService.getTask(stages[0].ProjectID, taskId).then(function (data) {
-               
+                console.log(JSON.stringify(data));
                 $scope.dnpTaskViewModel = data;
             }, onError);
         }

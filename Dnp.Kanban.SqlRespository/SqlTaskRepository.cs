@@ -58,14 +58,26 @@ namespace Dnp.Kanban.SqlRepository
         {
             return Task.Factory.StartNew < List<DnpTask>>(() =>
             {
-                List<DnpTask> tasks = new List<DnpTask>();
+                List<DnpTask> tasks = (from t in _dbContext.DbTask
+                                       join s in _dbContext.DbProjectStage on t.ProjectStageID equals s.ID
+                                       join p in _dbContext.DbProjects on s.ProjectID equals p.ID
+                                       where t.UserID == userId && t.DueDate.Value >= fromDate && t.DueDate <= toDate && t.IsCompleted == isCompleted
+                                       select new DnpTask
+                                       {
+                                           TaskID = t.TaskID,
+                                           ShortDescription = t.ShortDescription,
+                                           LongDescription = t.LongDescription,
+                                           Priority = (Priority)t.Priority,
+                                           DueDate = t.DueDate,
+                                           ProjectStageID = t.ProjectStageID,
+                                           IsCompleted = t.IsCompleted,
+                                           UserID = t.UserID,
+                                           ProjectName = p.Name,
+                                           StageName = s.StageName,
+                                           ProjectID = p.ID
+                                      }).ToList();
 
-                List<DbTask> task = _dbContext.DbTask.Where(t => t.UserID == userId && t.DueDate.Value >= fromDate && 
-                                                                 t.DueDate.Value <= toDate && t.IsCompleted == isCompleted)
-                                                     .ToList();
-
-                return task.Select(t => Mapper.Map<DbTask, DnpTask>(t)).ToList();
-                //return tasks;
+                return tasks;
             });
         }
 

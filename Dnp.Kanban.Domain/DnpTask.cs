@@ -10,7 +10,13 @@ namespace Dnp.Kanban.Domain
     {
         public int TaskID { get; set; }
 
+        public string ProjectName { get; set; }
+        
         public int ProjectStageID { get; set; }
+
+        public int ProjectID { get; set; }
+
+        public string StageName { get; set; }
 
         public string ShortDescription { get; set; }
 

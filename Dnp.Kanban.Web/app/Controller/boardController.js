@@ -4,6 +4,8 @@
 
     var boardController = function ($scope, $routeParams, projectService, taskService, commonDataService, $uibModal) {
 
+        $scope.loaded = false;
+
         projectService.getProject($routeParams.projectId).then(function (data) {
 
             $scope.ProjectName = data.Name;
@@ -25,9 +27,7 @@
                     stages[i].ProjectID = data[i].ProjectID;
                     stages[i].StageName = data[i].StageName;
                     stages[i].Order = data[i].Order;
-                    stages[i].className = "col-sm-" + colValue + " col-md-" + colValue;
-                    stages[i].height = { "height": height + "px" };
-                }
+                 }
 
                 $scope.stages = stages;
 
@@ -55,6 +55,14 @@
             taskService.getTasks($routeParams.projectId)
                        .then(function (data) {
                            $scope.tasks = data;
+
+                           if ($scope.loaded == false) {
+                               $scope.loaded = true;
+                               if ($routeParams.taskId && $routeParams.taskId > 0) {
+                                   openTask(800, $routeParams.taskId);
+                               }
+                           }
+                              
                        }, function (result) {
                            alert(JSON.stringify(result));
                        });
@@ -67,7 +75,12 @@
 
         $scope.refreshTasks = getTasks;
 
-        $scope.open = function (size) {
+        var openTask = function (size, taskId) {
+            
+            var tId = 0;
+            if(taskId && taskId > 0)
+                tId = taskId;
+
             var modelInstance = $uibModal.open({
                 animation: true,
                 templateUrl: "/Template/GetAuthTemplate/_taskDetail",
@@ -75,7 +88,7 @@
                 size: size,
                 resolve: {
                     taskId: function () {
-                        return 0;
+                        return tId;
                     },
                     stages: function () {
                         return $scope.stages;
@@ -92,6 +105,7 @@
             });
         };
 
+        $scope.open = openTask;
         $scope.newStage = function (stage) {
 
             if (stage == null)
@@ -131,6 +145,8 @@
                            //ToDo
                        });
         };
+
+
     };
 
     app.controller("boardController", boardController);

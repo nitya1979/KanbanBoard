@@ -30,7 +30,7 @@
             templateUrl: "/Template/GetAuthTemplate/_projectDetail",
             controller: "projectController"
         }).
-        when("/Board/:projectId",{
+        when("/Board/:projectId/:taskId?",{
             templateUrl: "Template/GetAuthTemplate/_Board",
             controller: "boardController"
         }).
