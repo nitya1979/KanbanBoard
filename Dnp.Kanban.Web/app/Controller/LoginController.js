@@ -20,6 +20,7 @@
         };
         
         var onError = function (result) {
+            alert(JSON.stringify(result));
             $scope.error = result.data.error_description;
             $scope.isAuth = false;
             sharedService.prepForBroadcast(false);

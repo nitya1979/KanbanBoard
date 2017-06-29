@@ -10,16 +10,14 @@
 
             var data = "grant_type=password&username=" + userName + "&password=" + loginPassword;
 
-            return $http.post("/Token", data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
+            return $http.post("Token", data, { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } })
                    .then(function (response) {
                        var currentDate = new Date();
                        if (rememberMe == true) {
                            $cookies.put('token', response.data.access_token, { expires: new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 13) });
                            $cookies.put('userName', response.data.userName);
-                           alert(rememberMe);
                        }
                        else {
-                           alert(rememberMe);
                            $cookies.put('token', response.data.access_token);
                            $cookies.put('userName', response.data.userName);
 

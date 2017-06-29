@@ -3,19 +3,20 @@
 
     app.config(['$locationProvider', function ($locationProvider) {
         $locationProvider.hashPrefix('');
+        $locationProvider.html5Mode(true);
     }]);
 
     app.config(function ($routeProvider) {
         $routeProvider.when("/Dashboard", {
-            templateUrl: "/Template/GetAuthTemplate/_dashboard",
+            templateUrl: "Template/GetAuthTemplate/_dashboard",
             controller: "dashboardController"
         }).
         when("/Login",{
-            templateUrl: "/Template/GetTemplate/_Login",
+            templateUrl: "Template/GetTemplate/_Login",
             controller: "LoginController"
         }).
         when("/Logout", {
-            templateUrl: "/Template/GetTemplate/_Logout",
+            templateUrl: "Template/GetTemplate/_Logout",
             controller: "logoutController"
         }).
         when("/Register", {
