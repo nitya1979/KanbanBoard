@@ -83,7 +83,7 @@
 
             var modelInstance = $uibModal.open({
                 animation: true,
-                templateUrl: "/Template/GetAuthTemplate/_taskDetail",
+                templateUrl: "Template/GetAuthTemplate/_taskDetail",
                 controller: "taskController",
                 size: size,
                 resolve: {
@@ -113,7 +113,7 @@
 
             var modelInstance = $uibModal.open({
                 animation: true,
-                templateUrl: "/Template/GetAuthTemplate/_stage",
+                templateUrl: "Template/GetAuthTemplate/_stage",
                 controller: "stageController",
                 resolve: {
                     projectId: function(){

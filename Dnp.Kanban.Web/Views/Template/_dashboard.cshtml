@@ -38,13 +38,13 @@
                     <th>Due Date</th>
                 </tr>
                 <tr class="danger text-danger" ng-repeat="task in dueTasks | filter: filterOverDue | orderBy : 'DueDate'">
-                    <td><a class="text-danger" href="#/Board/{{task.ProjectID}}/{{task.TaskID}}"> {{task.ShortDescription}}</a> </td>
-                    <td><a class="text-danger" href="#/Board/{{task.ProjectID}}"> {{task.ProjectName}}</a></td>
+                    <td><a class="text-danger" href=@Url.Content("~/#/Board/{{task.ProjectID}}/{{task.TaskID}}")> {{task.ShortDescription}}</a> </td>
+                    <td><a class="text-danger" href=@Url.Content("~/#/Board/{{task.ProjectID}}")> {{task.ProjectName}}</a></td>
                     <td>{{task.DueDate | date : 'dd/MM/yyyy'}}</td>
                 </tr>
                 <tr class="info text-info" ng-repeat="task in dueTasks | filter: filterToday | orderBy : 'DueDate'">
-                    <td><a class="text-info" href="#/Board/{{task.ProjectID}}/{{task.TaskID}}">{{task.ShortDescription}}</a> </td>
-                    <td><a class="text-info" href="#/Board/{{task.ProjectID}}"> {{task.ProjectName}}</a></td>
+                    <td><a class="text-info" href="/#/Board/{{task.ProjectID}}/{{task.TaskID}}">{{task.ShortDescription}}</a> </td>
+                    <td><a class="text-info" href="/#/Board/{{task.ProjectID}}"> {{task.ProjectName}}</a></td>
                     <td>{{task.DueDate | date : 'dd/MM/yyyy' }}</td>
                 </tr>
                 <tr ng-repeat="task in dueTasks | filter: filterThisWeek | orderBy : 'DueDate'">

@@ -10,12 +10,12 @@
                 priorities: '=',
                 stageChange : '&onStageChanged'
             },
-            templateUrl: "/app/directive/template/taskInfoCard.html",
+            templateUrl: "app/directive/template/taskInfoCard.html",
             controller: function ($scope, $uibModal) {
                 $scope.open = function (size) {
                     var modelInstance = $uibModal.open({
                         animation: true,
-                        templateUrl: "/Template/GetAuthTemplate/_taskDetail",
+                        templateUrl: "Template/GetAuthTemplate/_taskDetail",
                         controller: "taskController",
                         size: size,
                         resolve: {

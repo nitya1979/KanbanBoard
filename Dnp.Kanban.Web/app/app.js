@@ -3,7 +3,7 @@
 
     app.config(['$locationProvider', function ($locationProvider) {
         $locationProvider.hashPrefix('');
-        $locationProvider.html5Mode(true);
+        //$locationProvider.html5Mode(true);
     }]);
 
     app.config(function ($routeProvider) {
@@ -20,15 +20,15 @@
             controller: "logoutController"
         }).
         when("/Register", {
-            templateUrl: "/Template/GetTemplate/_Register",
+            templateUrl: "Template/GetTemplate/_Register",
             controller: "registrationController"
         }).
         when("/Project", {
-            templateUrl: "/Template/GetAuthTemplate/_projectDetail",
+            templateUrl: "Template/GetAuthTemplate/_projectDetail",
             controller: "projectController"
         }).
         when("/Project/:ID", {
-            templateUrl: "/Template/GetAuthTemplate/_projectDetail",
+            templateUrl: "Template/GetAuthTemplate/_projectDetail",
             controller: "projectController"
         }).
         when("/Board/:projectId/:taskId?",{

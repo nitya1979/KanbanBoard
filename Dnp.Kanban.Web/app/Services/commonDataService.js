@@ -2,7 +2,7 @@
 
     var commonDataService = function ($http) {
         var getPriorities = function () {
-            return $http.get("/api/Common/Priorities").then(function (response) {
+            return $http.get("api/Common/Priorities").then(function (response) {
                 return response.data;
             });
         };
