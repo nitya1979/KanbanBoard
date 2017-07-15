@@ -13,10 +13,9 @@
         $scope.loginData = loginData;
         var onLoginComplete = function (data) {
             $scope.isAuth = true;
-
             sharedService.prepForBroadcast(true);
 
-            $location.url("/Dashboard");
+            $location.url("/#/Dashboard");
         };
         
         var onError = function (result) {

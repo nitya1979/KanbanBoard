@@ -30,7 +30,7 @@
         };
 
         var logout = function () {
-            return $http.post("/api/Account/Logout").then(function (response) {
+            return $http.post("api/Account/Logout").then(function (response) {
                 alert(JSON.stringify(response));
                 $cookies.remove('token');
                 return response.data;
@@ -44,7 +44,7 @@
                 ConfirmPassword: confirmPassword
             };
 
-            $http.post("/api/Account/Register", JSON.stringify(data))
+            $http.post("api/Account/Register", JSON.stringify(data))
                  .then(function (response) {
                      return response.data;
                  });
